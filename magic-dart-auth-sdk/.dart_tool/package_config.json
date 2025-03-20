@@ -617,10 +617,10 @@
       "name": "magic_dart_auth_sdk",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-03-20T12:17:39.794454Z",
+  "generated": "2025-03-20T12:26:39.874547Z",
   "generator": "pub",
   "generatorVersion": "3.7.0-323.0.dev",
   "flutterRoot": "file:///G:/flutter_windows_3.29.2-stable/flutter",
