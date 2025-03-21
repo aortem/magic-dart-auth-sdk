@@ -1,5 +1,6 @@
 # Ignore all IDE settings
 .idea/
+./magic_dart_auth_sdk/.dart_tool
 
 # Ignore Flutter plugin files in example project
 /magic_dart_auth_sdk/example/magic_dart_auth_sdk-sample-app/.flutter-plugins
