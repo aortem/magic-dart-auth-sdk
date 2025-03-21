@@ -1,3 +1,5 @@
+import '../utils/aortem_magic_secure_storage.dart';
+
 /// AortemMagicAuthApiKeyManagement
 ///
 /// A class responsible for managing API keys securely within the Aortem Magic authentication system.
@@ -14,7 +16,6 @@
 /// bool isValid = apiKeyManager.verifyApiKey('your-api-key');
 /// print(isValid); // Outputs: true if valid
 /// ```
-import '../utils/aortem_magic_secure_storage.dart';
 
 class AortemMagicAuthApiKeyManagement {
   /// Stores the hashed version of the API key.
