@@ -1,8 +1,8 @@
 stages:
   - setup
   - validation
+  - unit_testing
   - analyze_sample_apps
-  - package_deployment
 
 # The pipeline covers a series of triggers to ensure full testing and coverage
 
@@ -58,7 +58,7 @@ validation_trigger:
 
 # Unit Test Conditional Triggers
 unit_test_trigger:
-  stage: validation
+  stage: unit_testing
   trigger:
     include: tools/pipelines/backend/child-ci-unit-tests.yml
   needs:
