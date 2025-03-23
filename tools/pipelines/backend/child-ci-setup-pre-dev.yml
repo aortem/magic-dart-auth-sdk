@@ -188,7 +188,7 @@ analyze_example:
     - analyze_main
   script:
     - echo "Analyzing example project..."
-    - cdmagic-dart-auth-sdk/example/magic-dart-auth-sdk-sample-app
+    - cd magic-dart-auth-sdk/example/magic-dart-auth-sdk-sample-app
     - flutter pub get || { echo "Failed to install dependencies. Exiting..."; exit 1; }
     - dart analyze > analysis_report.txt 2> error_log.txt || true
 
