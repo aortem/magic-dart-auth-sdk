@@ -69,7 +69,7 @@ analyze_example:
     - when: always
   script:
     - echo "Starting analysis for the example project..."
-    - cd magic_dart_auth_sdk/example/magic-dart-auth-sdk-sample-app
+    - cdmagic-dart-auth-sdk/example/magic-dart-auth-sdk-sample-app
     - pwd
     - echo "Listing contents of the current directory..."
     - ls -la
@@ -118,7 +118,7 @@ analyze_example:
     - analyze_main
   artifacts:
     paths:
-      - magic_dart_auth_sdk/example/magic-dart-auth-sdk-sample-app/analysis_report.txt
-      - magic_dart_auth_sdk/example/magic-dart-auth-sdk-sample-app/error_log.txt
-      - magic_dart_auth_sdk/example/magic-dart-auth-sdk-sample-app/filtered_report.txt
+      -magic-dart-auth-sdk/example/magic-dart-auth-sdk-sample-app/analysis_report.txt
+      -magic-dart-auth-sdk/example/magic-dart-auth-sdk-sample-app/error_log.txt
+      -magic-dart-auth-sdk/example/magic-dart-auth-sdk-sample-app/filtered_report.txt
     expire_in: 1h
