@@ -1,20 +1,20 @@
 # Add your own git ignore rules.
 
 # Ignore Flutter plugin files in example project
-/magic_dart_auth_sdk/example/magic_dart_auth_sdk-sample-app/.flutter-plugins
-/magic_dart_auth_sdk/example/magic_dart_auth_sdk-sample-app/.flutter-plugins-dependencies
+/magic_dart_auth_sdk/example/magic-dart-auth-sdk-sample-app/.flutter-plugins
+/magic_dart_auth_sdk/example/magic-dart-auth-sdk-sample-app/.flutter-plugins-dependencies
 
 # Ignore macOS generated files in example project
-/magic_dart_auth_sdk/example/magic_dart_auth_sdk-sample-app/macos/Flutter/GeneratedPluginRegistrant.swift
+/magic_dart_auth_sdk/example/magic-dart-auth-sdk-sample-app/macos/Flutter/GeneratedPluginRegistrant.swift
 
 #Ignore Release Key
-/magic_dart_auth_sdk/example/magic_dart_auth_sdk-sample-app/magic_dart_auth_sdk-release-key.jks
+/magic_dart_auth_sdk/example/magic-dart-auth-sdk-sample-app/magic_dart_auth_sdk-release-key.jks
 
 #Ignore Service Account JSON Key
-/magic_dart_auth_sdk/example/magic_dart_auth_sdk-sample-app/assets/service_account.json
+/magic_dart_auth_sdk/example/magic-dart-auth-sdk-sample-app/assets/service_account.json
 
 #Ignore Gradle Properties
-/magic_dart_auth_sdk/example/magic_dart_auth_sdk-sample-app/android/gradle.properties
+/magic_dart_auth_sdk/example/magic-dart-auth-sdk-sample-app/android/gradle.properties
 
 #Ignore Gradle Wrapper Properties
-/magic_dart_auth_sdk/example/magic_dart_auth_sdk-sample-app/android/gradle/wrapper/gradle-wrapper.properties
+/magic_dart_auth_sdk/example/magic-dart-auth-sdk-sample-app/android/gradle/wrapper/gradle-wrapper.properties
