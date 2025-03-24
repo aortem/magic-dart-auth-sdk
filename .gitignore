@@ -1,14 +1,10 @@
 # Global Repo Rules
 
 # Ignore all IDE settings
-<<<<<<< HEAD
 .idea/
-./magic_dart_auth_sdk/.dart_tool
-=======
-.idea
-.vscode
->>>>>>> development
+.vscode/
 
 # Ignore Dart clocal build tools
-.dart_tool
-pubspec.lock
+.dart_tool/
+pubspec.lock/
+
