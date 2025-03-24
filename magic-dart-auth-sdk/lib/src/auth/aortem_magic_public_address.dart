@@ -1,21 +1,22 @@
+import 'dart:convert';
+
 /// AortemMagicPublicAddressExtractor
-/// 
+///
 /// A utility class for extracting the public address from a Decentralized Identifier (DID) Token.
 /// This class provides strict and loose validation modes to ensure the extracted address follows the expected format.
-/// 
+///
 /// ## Features:
 /// - Extracts the `sub` field from a DID Token (JWT format) to retrieve the public Ethereum address.
 /// - Supports strict validation mode (must be a valid Ethereum address format: `0x` followed by 40 hexadecimal characters).
 /// - Supports loose validation mode (only checks for the `0x` prefix and non-empty content).
 /// - Throws an error if the token is invalid or the address format is incorrect.
-/// 
+///
 /// ## Usage Example:
 /// ```dart
 /// String didToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIweDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwIn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 /// String publicAddress = AortemMagicPublicAddressExtractor.getPublicAddress(didToken, strict: true);
 /// print(publicAddress); // Outputs: 0x123456789abcdef0123456789abcdef0123456789
 /// ```
-import 'dart:convert';
 
 class AortemMagicPublicAddressExtractor {
   /// Extracts the public address from a DID Token without external dependencies.
@@ -37,19 +38,22 @@ class AortemMagicPublicAddressExtractor {
 
       if (publicAddress == null || publicAddress.isEmpty) {
         throw FormatException(
-            'Public address (sub) is missing in the DID Token.');
+          'Public address (sub) is missing in the DID Token.',
+        );
       }
 
       // Validate based on strict or loose mode
       if (strict) {
         if (!_isValidStrictEthereumAddress(publicAddress)) {
           throw FormatException(
-              'Invalid Ethereum address format in strict mode.');
+            'Invalid Ethereum address format in strict mode.',
+          );
         }
       } else {
         if (!_isValidLooseEthereumAddress(publicAddress)) {
           throw FormatException(
-              'Invalid Ethereum address format in loose mode.');
+            'Invalid Ethereum address format in loose mode.',
+          );
         }
       }
 

@@ -1,21 +1,22 @@
+import 'dart:convert';
+
 /// AortemMagicTokenValidator
-/// 
+///
 /// A utility class for validating Decentralized Identifier (DID) Tokens (JWT format).
 /// Provides various validation options, including format checking, claim verification, and expiration handling.
-/// 
+///
 /// ## Features:
 /// - Validates JWT format (must have three parts: header, payload, signature).
 /// - Decodes and verifies required claims (`iss`, `sub`).
 /// - Checks for token expiration (`exp` claim) if required.
 /// - Provides basic and full validation methods.
-/// 
+///
 /// ## Usage Example:
 /// ```dart
 /// String didToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIweDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwIn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 /// bool isValid = AortemMagicTokenValidator.validate(didToken, checkClaims: true, checkExpiration: true);
 /// print(isValid); // Outputs: true if valid
 /// ```
-import 'dart:convert';
 
 class AortemMagicTokenValidator {
   /// Validates a DID Token (JWT format).
@@ -24,8 +25,11 @@ class AortemMagicTokenValidator {
   /// - [checkExpiration]: If `true`, verifies `exp` claim (if present).
   ///
   /// Throws an error if validation fails.
-  static bool validate(String didToken,
-      {bool checkClaims = false, bool checkExpiration = false}) {
+  static bool validate(
+    String didToken, {
+    bool checkClaims = false,
+    bool checkExpiration = false,
+  }) {
     if (didToken.isEmpty) {
       throw ArgumentError('DID Token cannot be empty.');
     }
@@ -58,7 +62,8 @@ class AortemMagicTokenValidator {
     List<String> parts = token.split('.');
     if (parts.length != 3) {
       throw FormatException(
-          'Invalid JWT format: Expected 3 parts (header, payload, signature).');
+        'Invalid JWT format: Expected 3 parts (header, payload, signature).',
+      );
     }
   }
 

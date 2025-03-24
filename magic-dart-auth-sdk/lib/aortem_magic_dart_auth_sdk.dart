@@ -1,4 +1,4 @@
-library magic_dart_auth_sdk;
+library;
 
 // Core
 export 'src/core/aortem_magic_api_key_manager.dart';

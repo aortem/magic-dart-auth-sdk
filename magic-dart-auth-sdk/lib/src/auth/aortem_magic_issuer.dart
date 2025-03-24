@@ -1,21 +1,20 @@
-/// AortemMagicIssuerExtractor
-/// 
+import 'dart:convert';
+
 /// A utility class for extracting the issuer (`iss`) field from a Decentralized Identifier (DID) Token.
 /// This class provides strict and loose validation modes to ensure the extracted issuer follows the expected format.
-/// 
+///
 /// ## Features:
 /// - Extracts the `iss` field from a DID Token (JWT format).
 /// - Supports strict validation mode (must be a valid URL format).
 /// - Supports loose validation mode (only checks for a recognizable domain format).
 /// - Throws an error if the token is invalid or the issuer format is incorrect.
-/// 
+///
 /// ## Usage Example:
 /// ```dart
 /// String didToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tIn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 /// String issuer = AortemMagicIssuerExtractor.getIssuer(didToken, strict: true);
 /// print(issuer); // Outputs: https://example.com
 /// ```
-import 'dart:convert';
 
 class AortemMagicIssuerExtractor {
   /// Extracts the issuer (`iss`) from a DID Token.
