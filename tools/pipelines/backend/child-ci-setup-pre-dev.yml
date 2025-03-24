@@ -188,7 +188,7 @@ analyze_example:
     - analyze_main
   script:
     - echo "Analyzing example project..."
-    - cd magic-dart-auth-sdk/example/magic-dart-auth-sdk-sample-app
+    - cd magic-dart-auth-sdk/example/magic-dart-auth-sdk-flutter-mobile-app
     - flutter pub get || { echo "Failed to install dependencies. Exiting..."; exit 1; }
     - dart analyze > analysis_report.txt 2> error_log.txt || true
 
@@ -228,7 +228,7 @@ analyze_example:
 
   artifacts:
     paths:
-      -magic-dart-auth-sdk/example/magic-dart-auth-sdk-sample-app/info_issues.txt
-      -magic-dart-auth-sdk/example/magic-dart-auth-sdk-sample-app/warning_issues.txt
-      -magic-dart-auth-sdk/example/magic-dart-auth-sdk-sample-app/error_issues.txt
+      -magic-dart-auth-sdk/example/magic-dart-auth-sdk-flutter-mobile-app/info_issues.txt
+      -magic-dart-auth-sdk/example/magic-dart-auth-sdk-flutter-mobile-app/warning_issues.txt
+      -magic-dart-auth-sdk/example/magic-dart-auth-sdk-flutter-mobile-app/error_issues.txt
     expire_in: 1h
