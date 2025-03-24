@@ -91,7 +91,7 @@ validate_dart_sdk_version:
     - echo "$PUBSPEC_FILES"
 
     # Define the minimum required Dart SDK version
-    - MINIMUM_VERSION="3.5.4"
+    - MINIMUM_VERSION="3.7.2"
     - ALL_VALID="true"
 
     # Iterate over each pubspec.yaml file
@@ -188,7 +188,7 @@ analyze_example:
     - analyze_main
   script:
     - echo "Analyzing example project..."
-    - cd magic_dart_auth_sdk/example/magic_dart_auth_sdk-sample-app
+    - cd magic-dart-auth-sdk/example/magic-dart-auth-sdk-sample-app
     - flutter pub get || { echo "Failed to install dependencies. Exiting..."; exit 1; }
     - dart analyze > analysis_report.txt 2> error_log.txt || true
 
@@ -228,7 +228,7 @@ analyze_example:
 
   artifacts:
     paths:
-      - magic_dart_auth_sdk/example/magic_dart_auth_sdk-sample-app/info_issues.txt
-      - magic_dart_auth_sdk/example/magic_dart_auth_sdk-sample-app/warning_issues.txt
-      - magic_dart_auth_sdk/example/magic_dart_auth_sdk-sample-app/error_issues.txt
+      -magic-dart-auth-sdk/example/magic-dart-auth-sdk-sample-app/info_issues.txt
+      -magic-dart-auth-sdk/example/magic-dart-auth-sdk-sample-app/warning_issues.txt
+      -magic-dart-auth-sdk/example/magic-dart-auth-sdk-sample-app/error_issues.txt
     expire_in: 1h
