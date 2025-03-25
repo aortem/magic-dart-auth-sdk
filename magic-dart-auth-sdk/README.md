@@ -1,8 +1,8 @@
-# magic Dart Admin Auth SDK
+# Magic Dart Auth SDK
 
 ## Overview
 
-The magic Dart Admin Auth SDK offers a robust and flexible set of tools to perform authentication procedures within Dart or Flutter projects. This is a Dart implementation of magic Authentication.
+The Magic Dart Auth SDK offers a robust and flexible set of tools to perform authentication procedures within Dart or Flutter projects. This is a Dart implementation of magic Authentication.
 
 ## Features:
 
@@ -14,7 +14,7 @@ The magic Dart Admin Auth SDK offers a robust and flexible set of tools to perfo
 
 ## Getting Started
 
-If you want to use the magic Dart Admin Auth SDK for implementing a magic authentication in your Flutter projects follow the instructions on how to set up the auth SDK.
+If you want to use the Magic Dart Auth SDK for implementing a magic authentication in your Flutter projects follow the instructions on how to set up the auth SDK.
 
 - Ensure you have a Flutter or Dart (3.4.x) SDK installed in your system.
 - Set up a magic project and service account.
