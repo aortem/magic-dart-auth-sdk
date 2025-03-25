@@ -29,47 +29,20 @@ This implementation does not yet support all functionalities of the Magic authen
 
 | #  | Method                                                     | Supported |
 |----|------------------------------------------------------------|:---------:|
-| 1  | Authorization Methods with Flexible Options                | ✅        |
-| 2  | Search Query Functionality with Flexible Options           | ✅        |
-| 3  | Token Reference Operations with Flexible Options           | ✅        |
-| 4  | Token Issuance/Generation Method                           | ✅        |
-| 5  | Refresh Token Flow                                         | ✅        |
-| 6  | Reset Token Flow                                           | ✅        |
-| 7  | Journey Token Flow                                         | ✅        |
-| 8  | Send Magic Link Email Method                               | ✅        |
-| 9  | Authenticate Magic Link Method                             | ✅        |
-| 10 | Implement Send OTP Method                                  | ✅        |
-| 11 | Authenticate OTP Method                                    | ✅        |
-| 12 | Authenticate TOTP Method                                   | ✅        |
-| 13 | Start Transaction Signing TOTP                             | ✅        |
-| 14 | Authenticate Transaction Signing TOTP Method               | ✅        |
-| 15 | Register TOTP Method                                       | ✅        |
-| 16 | Revoke TOTP Method                                         | ✅        |
-| 17 | evoke TOTP Management Method                               | ✅        |
-| 18 | Authentication Start (WebAuthn) Method                     | ✅        |
-| 19 | Authenticate WebAuthn Credential Method                    | ✅        |
-| 20 | Hosted WebAuthn Registration Hint Method                   | ✅        |
-| 21 | WebAuthn Registration Start Method                         | ✅        |
-| 22 | WebAuthn Registration Method                               | ✅        |
-| 23 | WebAuthn Registration External Method                      | ✅        |
-| 24 | WebAuthn Cross Device Registration Start Method            | ✅        |
-| 25 | WebAuthn Cross Device Registration Init Method             | ✅        |
-| 26 | WebAuthn Cross Device External Registration Init Method    | ✅        |
-| 27 | WebAuthn Cross Device Registration Method                  | ✅        |
-| 28 | WebAuthn Cross Device Abort Method                         | ✅        |
-| 29 | WebAuthn Cross Device Status Method                        | ✅        |
-| 30 | WebAuthn Cross Device Attach Device Method                 | ✅        |
-| 31 | WebAuthn Cross Device Authentication Init Method           | ✅        |
-| 32 | WebAuthn Cross Device Authenticate Start Method            | ✅        |
-| 33 | Authenticate Native Mobile Biometrics Method               | ✅        |
-| 34 | Mobile Biometrics Registration Method                      | ✅        |
-| 35 | Implement Mobile Biometrics Deletion Method                | ✅        |
-| 36 | Implement Authenticate Password Method                     | ✅        |
-| 37 | Implement Authenticate Session Method                      | ✅        |
-| 38 | Implement Refresh Backend Auth Token Method                | ✅        |
-| 39 | Logout Backend Session Method                              | ✅        |
-| 40 | Implement Get User Sessions Method                         | ✅        |
-| 41 | Implement Revoke User Sessions Method                      | ✅        |
+| 1  | Constuctors                                                | ✅        |
+| 2  | API Key Validation, Secure Storage, and Dynamic Updates    | ✅        |
+| 3  | getPublicAddress Method with Flexible Validationns         | ✅        |
+| 4  | getIssuer Method With Flexible Validation Options          | ✅        |
+| 5  | decode Method with Flexible Options                        | ✅        |
+| 6  | validate Method with Flexible Options                      | ✅        |
+| 7  | validate` Method with Flexible Options                     | ✅        |
+| 8  | getMetadataByPublicAddress Method with Flexible Options    | ✅        |
+| 9  | getMetadataByToken` Method with Flexible Options           | ✅        |
+| 10 | logoutByIssuer` Method with Flexible Options               | ✅        |
+| 11 | logoutByPublicAddress` Method with Flexible Options        | ✅        |
+| 12 | logoutByToken` Method with Flexible Options                | ✅        |
+| 13 | Implement Multichain Metadata Retrieval Methods            | ✅        |
+| 14 | parseAuthorizationHeader                                   | ✅        |
 
 ## Available Versions
 
