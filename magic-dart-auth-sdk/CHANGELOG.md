@@ -1,3 +1,7 @@
+## 0.0.1-pre+2
+
+- update readme
+
 ## 0.0.1-pre+1
 
 - Add all methods
