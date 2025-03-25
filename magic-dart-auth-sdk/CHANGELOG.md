@@ -1,6 +1,7 @@
 ## 0.0.1-pre+1
 
-- Add All methods into SDK.
+- Add all methods
+- Resolve all issues detected by dart analyze.
 
 ## 0.0.1-pre
 
