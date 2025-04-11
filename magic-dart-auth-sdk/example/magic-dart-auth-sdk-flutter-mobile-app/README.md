@@ -1,4 +1,4 @@
-# firebase-dart-admin-sample-app
+# magic-dart-admin-sample-app
 
 ## Description
 
@@ -32,9 +32,9 @@ import 'package:entra_id_dart_auth_sdk/entra_id_dart_auth_sdk.dart';
     void main() async
     {
 
-        FirebaseApp.initializeAppWithEnvironmentVariables(apiKey:'api_key',projectId: 'project_id',);
+        MagicApp.initializeAppWithEnvironmentVariables(apiKey:'api_key',projectId: 'project_id',);
 
-        FirebaseApp.instance.getAuth();
+        MagicApp.instance.getAuth();
 
         runApp(const MyApp());
     }
@@ -46,15 +46,15 @@ import 'package:entra_id_dart_auth_sdk/entra_id_dart_auth_sdk.dart';
   import 'package:flutter/material.dart';
   import 'package:entra_id_dart_auth_sdk/entra_id_dart_auth_sdk.dart';
   ```
-- In the main function call the 'FirebaseApp.initializeAppWithEnvironmentVariables' and pass in your api key and project id
+- In the main function call the 'MagicApp.initializeAppWithEnvironmentVariables' and pass in your api key and project id
 
   ```
-    FirebaseApp.initializeAppWithEnvironmentVariables(apiKey:'api_key',projectId: 'project_id',);
+    MagicApp.initializeAppWithEnvironmentVariables(apiKey:'api_key',projectId: 'project_id',);
   ```
 
-- Aftwards call the 'FirebaseApp.instance.getAuth()'
+- Aftwards call the 'MagicApp.instance.getAuth()'
   ```
-    FirebaseApp.instance.getAuth();
+    MagicApp.instance.getAuth();
   ```
 - Then call the 'runApp(const MyApp())' method
 
@@ -74,9 +74,9 @@ For mobile we can use either [Service Account](#serviceaccount) or [Service acco
 
     void main() async
     {
-        FirebaseApp.initializeAppWithServiceAccount(serviceAccountKeyFilePath: 'path_to_json_file');
+        MagicApp.initializeAppWithServiceAccount(serviceAccountKeyFilePath: 'path_to_json_file');
 
-        FirebaseApp.instance.getAuth();
+        MagicApp.instance.getAuth();
         runApp(const MyApp());
     }
     ```
@@ -88,13 +88,13 @@ For mobile we can use either [Service Account](#serviceaccount) or [Service acco
   import 'package:entra_id_dart_auth_sdk/entra_id_dart_auth_sdk.dart';
   ```
 
-- In the main function call the 'FirebaseApp.initializeAppWithServiceAccount' function and pass the path to your the json file
+- In the main function call the 'MagicApp.initializeAppWithServiceAccount' function and pass the path to your the json file
   ```
-   FirebaseApp.initializeAppWithServiceAccount(serviceAccountKeyFilePath: 'path_to_json_file');
+   MagicApp.initializeAppWithServiceAccount(serviceAccountKeyFilePath: 'path_to_json_file');
   ```
-- Aftwards call the 'FirebaseApp.instance.getAuth()'
+- Aftwards call the 'MagicApp.instance.getAuth()'
   ```
-    FirebaseApp.instance.getAuth();
+    MagicApp.instance.getAuth();
   ```
 - Then call the 'runApp(const MyApp())' method
 
@@ -111,9 +111,9 @@ For mobile we can use either [Service Account](#serviceaccount) or [Service acco
 
     void main() async
     {
-        FirebaseApp.initializeAppWithServiceAccountImpersonation(serviceAccountEmail: service_account_email, userEmail: user_email)
+        MagicApp.initializeAppWithServiceAccountImpersonation(serviceAccountEmail: service_account_email, userEmail: user_email)
 
-        FirebaseApp.instance.getAuth();
+        MagicApp.instance.getAuth();
         runApp(const MyApp());
     }
     ```
@@ -125,13 +125,13 @@ For mobile we can use either [Service Account](#serviceaccount) or [Service acco
   import 'package:entra_id_dart_auth_sdk/entra_id_dart_auth_sdk.dart';
   ```
 
-- In the main function call the 'FirebaseApp.initializeAppWithServiceAccountImpersonation' function and pass the service_account_email and user_email
+- In the main function call the 'MagicApp.initializeAppWithServiceAccountImpersonation' function and pass the service_account_email and user_email
   ```
-    FirebaseApp.initializeAppWithServiceAccountImpersonation(serviceAccountEmail: serviceAccountEmail,userEmail:userEmail,)
+    MagicApp.initializeAppWithServiceAccountImpersonation(serviceAccountEmail: serviceAccountEmail,userEmail:userEmail,)
   ```
-- Aftwards call the 'FirebaseApp.instance.getAuth()'
+- Aftwards call the 'MagicApp.instance.getAuth()'
   ```
-    FirebaseApp.instance.getAuth();
+    MagicApp.instance.getAuth();
   ```
 - Then call the 'runApp(const MyApp())' method
 

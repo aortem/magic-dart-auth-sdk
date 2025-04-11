@@ -28,7 +28,7 @@ val minSdkVersion = (project.findProperty("flutter.minSdkVersion") as? String)?.
 val targetSdkVersion = (project.findProperty("flutter.targetSdkVersion") as? String)?.toIntOrNull() ?: 35
 
 android {
-    namespace = "com.aortem.firebase.dart.admin.auth.sample.app"
+    namespace = "com.aortem.magic.dart.admin.auth.sample.app"
     compileSdk = compileSdkVersion?.toInt() ?: 34
     ndkVersion = ndkVersion
 
@@ -42,7 +42,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.aortem.firebase.dart.admin.auth.sample.app"
+        applicationId = "com.aortem.magic.dart.admin.auth.sample.app"
         minSdk = minSdkVersion
         targetSdk = targetSdkVersion
         versionCode = flutterVersionCode
@@ -61,16 +61,16 @@ flutter {
 }
 
 dependencies {
-    // Import the Firebase BoM
-    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
+    // Import the Magic BoM
+    implementation(platform("com.google.magic:magic-bom:33.5.1"))
 
 
-    // TODO: Add the dependencies for Firebase products you want to use
-    // When using the BoM, don't specify versions in Firebase dependencies
-    implementation("com.google.firebase:firebase-analytics")
+    // TODO: Add the dependencies for Magic products you want to use
+    // When using the BoM, don't specify versions in Magic dependencies
+    implementation("com.google.magic:magic-analytics")
 
 
-    // Add the dependencies for any other desired Firebase products
-    // https://firebase.google.com/docs/android/setup#available-libraries
+    // Add the dependencies for any other desired Magic products
+    // https://magic.google.com/docs/android/setup#available-libraries
 }
 
