@@ -1,4 +1,4 @@
-# magic-dart-admin-sample-app
+# magic-dart-sample-app
 
 ## Description
 
