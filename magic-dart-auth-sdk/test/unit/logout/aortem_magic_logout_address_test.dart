@@ -25,16 +25,16 @@ void main() {
         "0x1234567890abcdef1234567890abcdef12345678";
     final expectedResponse = {
       "success": true,
-      "message": "Logged out successfully"
+      "message": "Logged out successfully",
     };
 
-    when(() => mockHttpClient.post(
-              any(),
-              headers: any(named: "headers"),
-              body: any(named: "body"),
-            ))
-        .thenAnswer(
-            (_) async => http.Response(jsonEncode(expectedResponse), 200));
+    when(
+      () => mockHttpClient.post(
+        any(),
+        headers: any(named: "headers"),
+        body: any(named: "body"),
+      ),
+    ).thenAnswer((_) async => http.Response(jsonEncode(expectedResponse), 200));
 
     final result = await logoutService.logoutByPublicAddress(testPublicAddress);
 
@@ -52,11 +52,13 @@ void main() {
     const String testPublicAddress =
         "0x1234567890abcdef1234567890abcdef12345678";
 
-    when(() => mockHttpClient.post(
-          any(),
-          headers: any(named: "headers"),
-          body: any(named: "body"),
-        )).thenAnswer((_) async => http.Response("Unauthorized", 401));
+    when(
+      () => mockHttpClient.post(
+        any(),
+        headers: any(named: "headers"),
+        body: any(named: "body"),
+      ),
+    ).thenAnswer((_) async => http.Response("Unauthorized", 401));
 
     expect(
       () => logoutService.logoutByPublicAddress(testPublicAddress),
@@ -65,11 +67,14 @@ void main() {
   });
 
   test("Returns mock response when useStub is true", () async {
-    final stubLogoutService =
-        AortemMagicLogoutByPublicAddress(apiKey: "test_api_key", useStub: true);
+    final stubLogoutService = AortemMagicLogoutByPublicAddress(
+      apiKey: "test_api_key",
+      useStub: true,
+    );
 
-    final response = await stubLogoutService
-        .logoutByPublicAddress("0x1234567890abcdef1234567890abcdef12345678");
+    final response = await stubLogoutService.logoutByPublicAddress(
+      "0x1234567890abcdef1234567890abcdef12345678",
+    );
 
     expect(response["success"], true);
     expect(response["message"], contains("logged out successfully"));

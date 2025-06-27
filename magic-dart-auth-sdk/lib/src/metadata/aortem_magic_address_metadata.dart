@@ -40,8 +40,10 @@ class AortemMagicUserMetadataByPublicAddress {
   /// - Ensures the public address is not empty before sending the request.
   /// - Uses a mock response if `useStub` is enabled.
   /// - Throws an exception if the API request fails.
-  Future<Map<String, dynamic>> getMetadataByPublicAddress(String publicAddress,
-      {bool useStub = false}) async {
+  Future<Map<String, dynamic>> getMetadataByPublicAddress(
+    String publicAddress, {
+    bool useStub = false,
+  }) async {
     if (publicAddress.isEmpty) {
       throw ArgumentError("Public address cannot be empty.");
     }
@@ -56,8 +58,9 @@ class AortemMagicUserMetadataByPublicAddress {
       };
     }
 
-    final uri =
-        Uri.parse("$apiBaseUrl/v1/user/metadata?public_address=$publicAddress");
+    final uri = Uri.parse(
+      "$apiBaseUrl/v1/user/metadata?public_address=$publicAddress",
+    );
 
     final response = await client.get(
       uri,
@@ -71,7 +74,8 @@ class AortemMagicUserMetadataByPublicAddress {
       return jsonDecode(response.body);
     } else {
       throw Exception(
-          "Failed to fetch metadata: ${response.statusCode} - ${response.body}");
+        "Failed to fetch metadata: ${response.statusCode} - ${response.body}",
+      );
     }
   }
 }

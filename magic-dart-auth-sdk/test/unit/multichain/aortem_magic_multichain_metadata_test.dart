@@ -18,8 +18,11 @@ void main() {
       client: mockHttpClient,
     );
 
-    registerFallbackValue(Uri.parse(
-        "https://api.magic.com/v1/user/metadata/issuer/issuer_123?wallet=wallet_abc"));
+    registerFallbackValue(
+      Uri.parse(
+        "https://api.magic.com/v1/user/metadata/issuer/issuer_123?wallet=wallet_abc",
+      ),
+    );
   });
 
   test("Returns metadata when retrieval is successful", () async {
@@ -29,19 +32,18 @@ void main() {
         "issuer": "issuer_123",
         "wallet": "wallet_abc",
         "email": "test@example.com",
-        "createdAt": "2025-02-21T12:00:00Z"
-      }
+        "createdAt": "2025-02-21T12:00:00Z",
+      },
     };
 
-    when(() => mockHttpClient.get(
-              any(),
-              headers: any(named: "headers"),
-            ))
-        .thenAnswer(
-            (_) async => http.Response(jsonEncode(expectedResponse), 200));
+    when(
+      () => mockHttpClient.get(any(), headers: any(named: "headers")),
+    ).thenAnswer((_) async => http.Response(jsonEncode(expectedResponse), 200));
 
     final result = await metadataService.getMetadataByIssuerAndWallet(
-        "issuer_123", "wallet_abc");
+      "issuer_123",
+      "wallet_abc",
+    );
 
     expect(result, expectedResponse);
   });
@@ -59,24 +61,29 @@ void main() {
   });
 
   test("Throws an error when API response is not 200", () async {
-    when(() => mockHttpClient.get(
-          any(),
-          headers: any(named: "headers"),
-        )).thenAnswer((_) async => http.Response("Unauthorized", 401));
+    when(
+      () => mockHttpClient.get(any(), headers: any(named: "headers")),
+    ).thenAnswer((_) async => http.Response("Unauthorized", 401));
 
     expect(
       () => metadataService.getMetadataByIssuerAndWallet(
-          "issuer_123", "wallet_abc"),
+        "issuer_123",
+        "wallet_abc",
+      ),
       throwsA(isA<Exception>()),
     );
   });
 
   test("Returns mock response when useStub is true", () async {
     final stubMetadataService = AortemMagicMultichainMetadataService(
-        apiKey: "test_api_key", useStub: true);
+      apiKey: "test_api_key",
+      useStub: true,
+    );
 
     final response = await stubMetadataService.getMetadataByIssuerAndWallet(
-        "issuer_123", "wallet_abc");
+      "issuer_123",
+      "wallet_abc",
+    );
 
     expect(response["success"], true);
     expect(response["data"]["wallet"], "wallet_abc");

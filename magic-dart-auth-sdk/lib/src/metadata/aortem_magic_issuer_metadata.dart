@@ -57,7 +57,8 @@ class AortemMagicUserMetaDataByIssuer {
       return jsonDecode(response.body);
     } else {
       throw Exception(
-          "Failed to fetch metadata: ${response.statusCode} - ${response.body}");
+        "Failed to fetch metadata: ${response.statusCode} - ${response.body}",
+      );
     }
   }
 }

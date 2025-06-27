@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:ds_standard_features/ds_standard_features.dart' as http;
 
 /// AortemMagicLogoutByToken
-/// 
+///
 /// A class responsible for logging out users based on their authentication token.
 /// It securely communicates with the Magic API to perform the logout operation.
-/// 
+///
 /// ## Features:
 /// - Ensures the token is valid before sending requests.
 /// - Supports an optional stub mode for testing.
@@ -66,7 +66,9 @@ class AortemMagicLogoutByToken {
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
     } else {
-      throw Exception("Failed to log out: ${response.statusCode} - ${response.body}");
+      throw Exception(
+        "Failed to log out: ${response.statusCode} - ${response.body}",
+      );
     }
   }
 

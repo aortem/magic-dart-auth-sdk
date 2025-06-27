@@ -22,7 +22,10 @@ void main() {
   setUp(() {
     mockHttpClient = MockHttpClient();
     userMetadata = AortemMagicUserMetaDataByIssuer(
-        apiKey: apiKey, apiBaseUrl: apiBaseUrl, client: mockHttpClient);
+      apiKey: apiKey,
+      apiBaseUrl: apiBaseUrl,
+      client: mockHttpClient,
+    );
   });
 
   test("✅ Successfully retrieves metadata when given a valid issuer", () async {
@@ -30,13 +33,12 @@ void main() {
       "issuer": validIssuer,
       "email": "user@example.com",
       "publicAddress": "0x123456789abcdef",
-      "createdAt": 1700000000
+      "createdAt": 1700000000,
     };
 
-    when(() => mockHttpClient.get(any(), headers: any(named: "headers")))
-        .thenAnswer(
-      (_) async => http.Response(jsonEncode(mockResponse), 200),
-    );
+    when(
+      () => mockHttpClient.get(any(), headers: any(named: "headers")),
+    ).thenAnswer((_) async => http.Response(jsonEncode(mockResponse), 200));
 
     final metadata = await userMetadata.getMetadataByIssuer(validIssuer);
     expect(metadata, isA<Map<String, dynamic>>());
@@ -48,10 +50,13 @@ void main() {
   });
 
   test("⚠️ Handles network failure properly", () async {
-    when(() => mockHttpClient.get(any(), headers: any(named: "headers")))
-        .thenThrow(Exception("Network error"));
+    when(
+      () => mockHttpClient.get(any(), headers: any(named: "headers")),
+    ).thenThrow(Exception("Network error"));
 
     expect(
-        () => userMetadata.getMetadataByIssuer(validIssuer), throwsException);
+      () => userMetadata.getMetadataByIssuer(validIssuer),
+      throwsException,
+    );
   });
 }

@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:ds_standard_features/ds_standard_features.dart' as http;
 
 /// AortemMagicLogoutByIssuer
-/// 
+///
 /// A class responsible for logging out users based on their issuer identifier.
 /// It securely communicates with the Magic API to perform the logout operation.
-/// 
+///
 /// ## Features:
 /// - Ensures the issuer is valid before sending requests.
 /// - Supports an optional stub mode for testing.
@@ -67,7 +67,8 @@ class AortemMagicLogoutByIssuer {
       return jsonDecode(response.body);
     } else {
       throw Exception(
-          "Failed to log out: ${response.statusCode} - ${response.body}");
+        "Failed to log out: ${response.statusCode} - ${response.body}",
+      );
     }
   }
 

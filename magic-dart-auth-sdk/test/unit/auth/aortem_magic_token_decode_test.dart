@@ -11,8 +11,9 @@ void main() {
 
     // Helper function to generate a mock DID token
     String generateDidToken(String payload) {
-      final header =
-          base64Url.encode(utf8.encode('{"alg":"HS256","typ":"JWT"}'));
+      final header = base64Url.encode(
+        utf8.encode('{"alg":"HS256","typ":"JWT"}'),
+      );
       final encodedPayload = base64Url.encode(utf8.encode(payload));
       return '$header.$encodedPayload.signature';
     }
@@ -32,39 +33,48 @@ void main() {
     });
 
     test('Throws error for empty DID Token', () {
-      expect(() => AortemMagicTokenDecoder.decode(''),
-          throwsA(isA<ArgumentError>()));
+      expect(
+        () => AortemMagicTokenDecoder.decode(''),
+        throwsA(isA<ArgumentError>()),
+      );
     });
 
     test('Throws error for invalid JWT format', () {
-      expect(() => AortemMagicTokenDecoder.decode('invalid.token'),
-          throwsA(isA<FormatException>()));
+      expect(
+        () => AortemMagicTokenDecoder.decode('invalid.token'),
+        throwsA(isA<FormatException>()),
+      );
     });
 
     test('Throws error when "iss" field is missing with verification', () {
       final invalidPayload = '{"sub":"0x123456789abcdef"}';
       final didToken = generateDidToken(invalidPayload);
 
-      expect(() => AortemMagicTokenDecoder.decode(didToken, verify: true),
-          throwsA(isA<FormatException>()));
+      expect(
+        () => AortemMagicTokenDecoder.decode(didToken, verify: true),
+        throwsA(isA<FormatException>()),
+      );
     });
 
     test('Throws error when "sub" field is missing with verification', () {
       final invalidPayload = '{"iss":"https://auth.magic.com"}';
       final didToken = generateDidToken(invalidPayload);
 
-      expect(() => AortemMagicTokenDecoder.decode(didToken, verify: true),
-          throwsA(isA<FormatException>()));
+      expect(
+        () => AortemMagicTokenDecoder.decode(didToken, verify: true),
+        throwsA(isA<FormatException>()),
+      );
     });
 
     test(
-        'Decodes DID Token without required fields when verification is disabled',
-        () {
-      final invalidPayload = '{}';
-      final didToken = generateDidToken(invalidPayload);
+      'Decodes DID Token without required fields when verification is disabled',
+      () {
+        final invalidPayload = '{}';
+        final didToken = generateDidToken(invalidPayload);
 
-      final result = AortemMagicTokenDecoder.decode(didToken, verify: false);
-      expect(result, isEmpty);
-    });
+        final result = AortemMagicTokenDecoder.decode(didToken, verify: false);
+        expect(result, isEmpty);
+      },
+    );
   });
 }
