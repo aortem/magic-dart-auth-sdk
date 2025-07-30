@@ -22,7 +22,6 @@ dependencies:
 
 dev_dependencies:
   ds_tools_testing: ^0.0.4 #Standard Dart Team Testing Tools
-  test_reporter: any #required to generate JUnit report 
   http: any
   git_hooks: any
 
