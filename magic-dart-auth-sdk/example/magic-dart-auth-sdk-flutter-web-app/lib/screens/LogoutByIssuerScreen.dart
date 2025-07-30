@@ -39,7 +39,8 @@ class AortemMagicLogoutByIssuer {
       return jsonDecode(response.body);
     } else {
       throw Exception(
-          "Failed to log out: ${response.statusCode} - ${response.body}");
+        "Failed to log out: ${response.statusCode} - ${response.body}",
+      );
     }
   }
 
@@ -137,12 +138,16 @@ class _LogoutByIssuerScreenState extends State<LogoutByIssuerScreen> {
                   : const Text("Logout"),
             ),
             const SizedBox(height: 24),
-            const Text("Response:",
-                style: TextStyle(fontWeight: FontWeight.bold)),
+            const Text(
+              "Response:",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             Expanded(
               child: SingleChildScrollView(
-                child: SelectableText(result,
-                    style: const TextStyle(fontFamily: 'monospace')),
+                child: SelectableText(
+                  result,
+                  style: const TextStyle(fontFamily: 'monospace'),
+                ),
               ),
             ),
           ],

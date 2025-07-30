@@ -17,8 +17,9 @@ class _AuthHeaderTestScreenState extends State<AuthHeaderTestScreen> {
     final input = _headerController.text.trim();
     setState(() {
       try {
-        final token =
-            AortemMagicAuthHeaderParse.parseAuthorizationHeader(input);
+        final token = AortemMagicAuthHeaderParse.parseAuthorizationHeader(
+          input,
+        );
         _result = '✅ Extracted Token:\n\n$token';
         _error = false;
       } catch (e) {
@@ -62,9 +63,7 @@ class _AuthHeaderTestScreenState extends State<AuthHeaderTestScreen> {
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: _error ? Colors.red.shade50 : Colors.green.shade50,
-                  border: Border.all(
-                    color: _error ? Colors.red : Colors.green,
-                  ),
+                  border: Border.all(color: _error ? Colors.red : Colors.green),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: SelectableText(

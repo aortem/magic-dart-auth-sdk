@@ -25,8 +25,9 @@ class _GetMetadataByPublicAddressScreenState
       return;
     }
 
-    final client =
-        AortemMagicUserMetadataByPublicAddress(apiKey: widget.apiKey);
+    final client = AortemMagicUserMetadataByPublicAddress(
+      apiKey: widget.apiKey,
+    );
 
     setState(() {
       _loading = true;

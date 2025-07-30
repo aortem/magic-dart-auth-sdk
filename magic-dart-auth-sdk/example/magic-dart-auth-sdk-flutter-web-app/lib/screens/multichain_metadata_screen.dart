@@ -24,9 +24,9 @@ class _MultichainMetadataScreenState extends State<MultichainMetadataScreen> {
   void initState() {
     super.initState();
     metadataService = AortemMagicMultichainMetadataService(
-        apiKey: 'your-real-or-test-api-key',
-        useStub: true // Set true to test stub response
-        );
+      apiKey: 'your-real-or-test-api-key',
+      useStub: true, // Set true to test stub response
+    );
   }
 
   void _fetchMetadata() async {
@@ -48,15 +48,21 @@ class _MultichainMetadataScreenState extends State<MultichainMetadataScreen> {
       switch (_selectedType) {
         case 'issuer':
           metadata = await metadataService.getMetadataByIssuerAndWallet(
-              identifier, wallet);
+            identifier,
+            wallet,
+          );
           break;
         case 'public-address':
           metadata = await metadataService.getMetadataByPublicAddressAndWallet(
-              identifier, wallet);
+            identifier,
+            wallet,
+          );
           break;
         case 'token':
           metadata = await metadataService.getMetadataByTokenAndWallet(
-              identifier, wallet);
+            identifier,
+            wallet,
+          );
           break;
         default:
           throw ArgumentError('Unknown type: $_selectedType');
@@ -87,7 +93,9 @@ class _MultichainMetadataScreenState extends State<MultichainMetadataScreen> {
               items: const [
                 DropdownMenuItem(value: 'issuer', child: Text('Issuer')),
                 DropdownMenuItem(
-                    value: 'public-address', child: Text('Public Address')),
+                  value: 'public-address',
+                  child: Text('Public Address'),
+                ),
                 DropdownMenuItem(value: 'token', child: Text('Token')),
               ],
               onChanged: (value) => setState(() => _selectedType = value!),
