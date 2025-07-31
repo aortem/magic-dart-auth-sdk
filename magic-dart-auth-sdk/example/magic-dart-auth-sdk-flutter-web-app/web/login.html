@@ -1,0 +1,72 @@
+<!-- Save this file as magic_login.html and open in a browser -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Magic DID Token Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/magic-sdk/dist/magic.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 80px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 300px;
+        }
+
+        #tokenOutput {
+            margin-top: 20px;
+            word-break: break-all;
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 600px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>🔐 Magic Login - DID Token Generator</h2>
+
+    <input type="email" id="email" placeholder="Enter your email" />
+    <button onclick="login()">Login & Get DID Token</button>
+
+    <div id="tokenOutput"></div>
+
+    <script>
+        const magic = new Magic('pk_live_B674E1D5F5E838BF'); // Replace with your real publishable key
+
+        async function login() {
+            const email = document.getElementById("email").value;
+            if (!email) {
+                alert("Please enter a valid email");
+                return;
+            }
+
+            try {
+                await magic.auth.loginWithEmailOTP({ email });
+                const didToken = await magic.user.getIdToken();
+
+                console.log("✅ Your DID Token:", didToken);
+                document.getElementById("tokenOutput").innerText =
+                    "✅ Your DID Token:\n\n" + didToken;
+            } catch (err) {
+                console.error("❌ Error:", err);
+                alert("Error: " + err.message);
+            }
+        }
+    </script>
+</body>
+
+</html>

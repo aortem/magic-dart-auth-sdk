@@ -32,7 +32,7 @@ class AortemMagicUserMetadataByPublicAddress {
   /// - Defaults `apiBaseUrl` to "https://api.magic.com".
   AortemMagicUserMetadataByPublicAddress({
     required this.apiKey,
-    this.apiBaseUrl = "https://api.magic.com",
+    this.apiBaseUrl = "https://api.magic.link",
     http.Client? client,
   }) : client = client ?? http.Client();
 
