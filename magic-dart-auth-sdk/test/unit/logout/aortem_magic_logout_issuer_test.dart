@@ -23,16 +23,16 @@ void main() {
     const String testIssuer = "did:magic:12345";
     final expectedResponse = {
       "success": true,
-      "message": "Logged out successfully"
+      "message": "Logged out successfully",
     };
 
-    when(() => mockHttpClient.post(
-              any(),
-              headers: any(named: "headers"),
-              body: any(named: "body"),
-            ))
-        .thenAnswer(
-            (_) async => http.Response(jsonEncode(expectedResponse), 200));
+    when(
+      () => mockHttpClient.post(
+        any(),
+        headers: any(named: "headers"),
+        body: any(named: "body"),
+      ),
+    ).thenAnswer((_) async => http.Response(jsonEncode(expectedResponse), 200));
 
     final result = await logoutService.logoutByIssuer(testIssuer);
 
@@ -49,11 +49,13 @@ void main() {
   test("Throws an error when API response is not 200", () async {
     const String testIssuer = "did:magic:invalid";
 
-    when(() => mockHttpClient.post(
-          any(),
-          headers: any(named: "headers"),
-          body: any(named: "body"),
-        )).thenAnswer((_) async => http.Response("Unauthorized", 401));
+    when(
+      () => mockHttpClient.post(
+        any(),
+        headers: any(named: "headers"),
+        body: any(named: "body"),
+      ),
+    ).thenAnswer((_) async => http.Response("Unauthorized", 401));
 
     expect(
       () => logoutService.logoutByIssuer(testIssuer),
@@ -62,8 +64,10 @@ void main() {
   });
 
   test("Returns mock response when useStub is true", () async {
-    final stubLogoutService =
-        AortemMagicLogoutByIssuer(apiKey: "test_api_key", useStub: true);
+    final stubLogoutService = AortemMagicLogoutByIssuer(
+      apiKey: "test_api_key",
+      useStub: true,
+    );
 
     final response = await stubLogoutService.logoutByIssuer("did:magic:12345");
 

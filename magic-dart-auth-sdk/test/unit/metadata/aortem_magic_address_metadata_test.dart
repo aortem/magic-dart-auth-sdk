@@ -22,45 +22,57 @@ void main() {
   setUp(() {
     mockHttpClient = MockHttpClient();
     userMetadata = AortemMagicUserMetadataByPublicAddress(
-        apiKey: apiKey, apiBaseUrl: apiBaseUrl, client: mockHttpClient);
-  });
-
-  test("✅ Successfully retrieves metadata when given a valid public address",
-      () async {
-    final mockResponse = {
-      "issuer": "did:magic:$validPublicAddress",
-      "email": "user@example.com",
-      "publicAddress": validPublicAddress,
-      "createdAt": 1700000000
-    };
-
-    when(() => mockHttpClient.get(any(), headers: any(named: "headers")))
-        .thenAnswer(
-      (_) async => http.Response(jsonEncode(mockResponse), 200),
+      apiKey: apiKey,
+      apiBaseUrl: apiBaseUrl,
+      client: mockHttpClient,
     );
-
-    final metadata =
-        await userMetadata.getMetadataByPublicAddress(validPublicAddress);
-    expect(metadata, isA<Map<String, dynamic>>());
-    expect(metadata["publicAddress"], equals(validPublicAddress));
   });
+
+  test(
+    "✅ Successfully retrieves metadata when given a valid public address",
+    () async {
+      final mockResponse = {
+        "issuer": "did:magic:$validPublicAddress",
+        "email": "user@example.com",
+        "publicAddress": validPublicAddress,
+        "createdAt": 1700000000,
+      };
+
+      when(
+        () => mockHttpClient.get(any(), headers: any(named: "headers")),
+      ).thenAnswer((_) async => http.Response(jsonEncode(mockResponse), 200));
+
+      final metadata = await userMetadata.getMetadataByPublicAddress(
+        validPublicAddress,
+      );
+      expect(metadata, isA<Map<String, dynamic>>());
+      expect(metadata["publicAddress"], equals(validPublicAddress));
+    },
+  );
 
   test("❌ Throws ArgumentError when public address is empty", () async {
     expect(
-        () => userMetadata.getMetadataByPublicAddress(""), throwsArgumentError);
+      () => userMetadata.getMetadataByPublicAddress(""),
+      throwsArgumentError,
+    );
   });
 
   test("⚠️ Handles network failure properly", () async {
-    when(() => mockHttpClient.get(any(), headers: any(named: "headers")))
-        .thenThrow(Exception("Network error"));
+    when(
+      () => mockHttpClient.get(any(), headers: any(named: "headers")),
+    ).thenThrow(Exception("Network error"));
 
-    expect(() => userMetadata.getMetadataByPublicAddress(validPublicAddress),
-        throwsException);
+    expect(
+      () => userMetadata.getMetadataByPublicAddress(validPublicAddress),
+      throwsException,
+    );
   });
 
   test("🛠️ Returns stub data when useStub=true", () async {
-    final metadata = await userMetadata
-        .getMetadataByPublicAddress(validPublicAddress, useStub: true);
+    final metadata = await userMetadata.getMetadataByPublicAddress(
+      validPublicAddress,
+      useStub: true,
+    );
     expect(metadata["publicAddress"], equals(validPublicAddress));
     expect(metadata.containsKey("issuer"), isTrue);
   });

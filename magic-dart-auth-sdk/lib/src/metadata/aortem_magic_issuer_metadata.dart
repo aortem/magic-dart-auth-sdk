@@ -32,7 +32,7 @@ class AortemMagicUserMetaDataByIssuer {
   /// - Defaults `apiBaseUrl` to "https://api.magic.com".
   AortemMagicUserMetaDataByIssuer({
     required this.apiKey,
-    this.apiBaseUrl = "https://api.magic.com",
+    this.apiBaseUrl = "https://api.magic.link",
     http.Client? client,
   }) : client = client ?? http.Client(); // Allow passing a mock client
 
@@ -57,7 +57,8 @@ class AortemMagicUserMetaDataByIssuer {
       return jsonDecode(response.body);
     } else {
       throw Exception(
-          "Failed to fetch metadata: ${response.statusCode} - ${response.body}");
+        "Failed to fetch metadata: ${response.statusCode} - ${response.body}",
+      );
     }
   }
 }

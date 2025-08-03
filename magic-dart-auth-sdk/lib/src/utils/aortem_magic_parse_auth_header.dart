@@ -3,7 +3,7 @@ class AortemMagicAuthHeaderParse {
   /// Parses the [authorizationHeader] and extracts the token.
   ///
   /// This method expects the header to be in the format: `"Bearer <token>"`.
-  /// 
+  ///
   /// - If the header is empty, it throws an [ArgumentError].
   /// - If the format is incorrect, it throws an [ArgumentError] indicating the expected format.
   ///
@@ -40,6 +40,7 @@ class AortemMagicAuthHeaderParse {
     }
 
     throw ArgumentError(
-        'Invalid Authorization header format. Expected "Bearer <token>".');
+      'Invalid Authorization header format. Expected "Bearer <token>".',
+    );
   }
 }

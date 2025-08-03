@@ -6,31 +6,36 @@ import 'package:magic_dart_auth_sdk/src/auth/aortem_magic_token_validation.dart'
 void main() {
   group('TokenValidator.validate', () {
     // Sample valid payload
-    final  validPayload =
+    final validPayload =
         '{"iss":"https://auth.magic.com","sub":"0x123456789abcdef","exp":${(DateTime.now().millisecondsSinceEpoch ~/ 1000) + 3600}}';
 
     // Sample expired token payload
-    final  expiredPayload =
+    final expiredPayload =
         '{"iss":"https://auth.magic.com","sub":"0x123456789abcdef","exp":${(DateTime.now().millisecondsSinceEpoch ~/ 1000) - 3600}}';
 
     // Helper function to generate a mock DID token
     String generateDidToken(String payload) {
-      final header =
-          base64Url.encode(utf8.encode('{"alg":"HS256","typ":"JWT"}'));
+      final header = base64Url.encode(
+        utf8.encode('{"alg":"HS256","typ":"JWT"}'),
+      );
       final encodedPayload = base64Url.encode(utf8.encode(payload));
       return '$header.$encodedPayload.signature';
     }
 
-    test('Validates a properly formatted DID Token without additional checks',
-        () {
-      final didToken = generateDidToken(validPayload);
-      expect(AortemMagicTokenValidator.validate(didToken), isTrue);
-    });
+    test(
+      'Validates a properly formatted DID Token without additional checks',
+      () {
+        final didToken = generateDidToken(validPayload);
+        expect(AortemMagicTokenValidator.validate(didToken), isTrue);
+      },
+    );
 
     test('Validates a DID Token with required claims', () {
       final didToken = generateDidToken(validPayload);
-      expect(AortemMagicTokenValidator.validate(didToken, checkClaims: true),
-          isTrue);
+      expect(
+        AortemMagicTokenValidator.validate(didToken, checkClaims: true),
+        isTrue,
+      );
     });
 
     test('Throws error if "iss" field is missing', () {
@@ -38,8 +43,9 @@ void main() {
       final didToken = generateDidToken(invalidPayload);
 
       expect(
-          () => AortemMagicTokenValidator.validate(didToken, checkClaims: true),
-          throwsA(isA<FormatException>()));
+        () => AortemMagicTokenValidator.validate(didToken, checkClaims: true),
+        throwsA(isA<FormatException>()),
+      );
     });
 
     test('Throws error if "sub" field is missing', () {
@@ -47,24 +53,27 @@ void main() {
       final didToken = generateDidToken(invalidPayload);
 
       expect(
-          () => AortemMagicTokenValidator.validate(didToken, checkClaims: true),
-          throwsA(isA<FormatException>()));
+        () => AortemMagicTokenValidator.validate(didToken, checkClaims: true),
+        throwsA(isA<FormatException>()),
+      );
     });
 
     test('Throws error if token is expired', () {
       final didToken = generateDidToken(expiredPayload);
 
       expect(
-          () => AortemMagicTokenValidator.validate(didToken,
-              checkExpiration: true),
-          throwsA(isA<FormatException>()));
+        () =>
+            AortemMagicTokenValidator.validate(didToken, checkExpiration: true),
+        throwsA(isA<FormatException>()),
+      );
     });
 
     test('Passes validation if token is not expired', () {
       final didToken = generateDidToken(validPayload);
       expect(
-          AortemMagicTokenValidator.validate(didToken, checkExpiration: true),
-          isTrue);
+        AortemMagicTokenValidator.validate(didToken, checkExpiration: true),
+        isTrue,
+      );
     });
 
     test('Basic validation checks only format', () {

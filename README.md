@@ -89,4 +89,4 @@ The **Magic Dart Auth SDK** is licensed under a dual-license approach:
 
 ## Enhance with Magic Dart Auth SDK
 
-We hope the Magic Dart Auth SDK helps you to efficiently build and scale your server-side applications. Join our growing community and start contributing to the ecosystem today!  test
+We hope the Magic Dart Auth SDK helps you to efficiently build and scale your server-side applications. Join our growing community and start contributing to the ecosystem today!
