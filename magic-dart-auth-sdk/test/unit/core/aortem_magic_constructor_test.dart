@@ -1,4 +1,3 @@
-
 import 'package:ds_tools_testing/ds_tools_testing.dart';
 import 'package:magic_dart_auth_sdk/src/core/aortem_magic_constructor.dart';
 
@@ -14,7 +13,10 @@ void main() {
     });
 
     test('Throws error for invalid API key format', () {
-      expect(() => AortemMagicAuth('invalid key!'), throwsA(isA<ArgumentError>()));
+      expect(
+        () => AortemMagicAuth('invalid key!'),
+        throwsA(isA<ArgumentError>()),
+      );
     });
   });
 
@@ -32,7 +34,10 @@ void main() {
 
     test('Throws error for updating with invalid API key format', () {
       final magic = AortemMagicAuth('valid-api-key');
-      expect(() => magic.updateApiKey('invalid key!'), throwsA(isA<ArgumentError>()));
+      expect(
+        () => magic.updateApiKey('invalid key!'),
+        throwsA(isA<ArgumentError>()),
+      );
     });
   });
 }

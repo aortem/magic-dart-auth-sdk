@@ -26,15 +26,12 @@ void main() {
       "issuer": "did:magic:12345",
       "email": "user@example.com",
       "public_address": "0x123456789abcdef",
-      "created_at": "2024-01-01T12:00:00Z"
+      "created_at": "2024-01-01T12:00:00Z",
     };
 
-    when(() => mockHttpClient.get(
-              any(),
-              headers: any(named: "headers"),
-            ))
-        .thenAnswer(
-            (_) async => http.Response(jsonEncode(expectedResponse), 200));
+    when(
+      () => mockHttpClient.get(any(), headers: any(named: "headers")),
+    ).thenAnswer((_) async => http.Response(jsonEncode(expectedResponse), 200));
 
     final result = await userMetadataByToken.getMetadataByToken(testToken);
 
@@ -51,10 +48,9 @@ void main() {
   test("Throws an error when API response is not 200", () async {
     const String testToken = "invalid_token";
 
-    when(() => mockHttpClient.get(
-          any(),
-          headers: any(named: "headers"),
-        )).thenAnswer((_) async => http.Response("Unauthorized", 401));
+    when(
+      () => mockHttpClient.get(any(), headers: any(named: "headers")),
+    ).thenAnswer((_) async => http.Response("Unauthorized", 401));
 
     expect(
       () => userMetadataByToken.getMetadataByToken(testToken),

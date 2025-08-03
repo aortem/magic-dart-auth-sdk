@@ -34,7 +34,9 @@ class AortemMagicMultichainMetadataService {
   ///
   /// Throws an [ArgumentError] if the input values are invalid.
   Future<Map<String, dynamic>> getMetadataByIssuerAndWallet(
-      String issuer, String wallet) async {
+    String issuer,
+    String wallet,
+  ) async {
     return _fetchMetadata("issuer", issuer, wallet);
   }
 
@@ -42,7 +44,9 @@ class AortemMagicMultichainMetadataService {
   ///
   /// Throws an [ArgumentError] if the input values are invalid.
   Future<Map<String, dynamic>> getMetadataByPublicAddressAndWallet(
-      String publicAddress, String wallet) async {
+    String publicAddress,
+    String wallet,
+  ) async {
     return _fetchMetadata("public-address", publicAddress, wallet);
   }
 
@@ -50,7 +54,9 @@ class AortemMagicMultichainMetadataService {
   ///
   /// Throws an [ArgumentError] if the input values are invalid.
   Future<Map<String, dynamic>> getMetadataByTokenAndWallet(
-      String token, String wallet) async {
+    String token,
+    String wallet,
+  ) async {
     return _fetchMetadata("token", token, wallet);
   }
 
@@ -62,7 +68,10 @@ class AortemMagicMultichainMetadataService {
   ///
   /// Throws an [ArgumentError] if the identifier or wallet is invalid.
   Future<Map<String, dynamic>> _fetchMetadata(
-      String type, String identifier, String wallet) async {
+    String type,
+    String identifier,
+    String wallet,
+  ) async {
     if (!_isValid(identifier) || !_isValid(wallet)) {
       throw ArgumentError("Invalid $type or wallet format.");
     }
@@ -72,7 +81,8 @@ class AortemMagicMultichainMetadataService {
     }
 
     final uri = Uri.parse(
-        "$apiBaseUrl/v1/user/metadata/$type/$identifier?wallet=$wallet");
+      "$apiBaseUrl/v1/user/metadata/$type/$identifier?wallet=$wallet",
+    );
 
     final response = await client.get(
       uri,
@@ -86,7 +96,8 @@ class AortemMagicMultichainMetadataService {
       return jsonDecode(response.body);
     } else {
       throw Exception(
-          "Failed to retrieve metadata: ${response.statusCode} - ${response.body}");
+        "Failed to retrieve metadata: ${response.statusCode} - ${response.body}",
+      );
     }
   }
 
@@ -95,7 +106,10 @@ class AortemMagicMultichainMetadataService {
   /// [type] specifies the identifier type, [identifier] is the provided identifier value,
   /// and [wallet] represents the associated wallet address.
   Map<String, dynamic> _mockMetadataResponse(
-      String type, String identifier, String wallet) {
+    String type,
+    String identifier,
+    String wallet,
+  ) {
     return {
       "success": true,
       "message": "Mock metadata retrieved successfully.",
@@ -107,7 +121,7 @@ class AortemMagicMultichainMetadataService {
         "email": "mock@example.com",
         "publicAddress": "0xMockAddress123",
         "createdAt": DateTime.now().toIso8601String(),
-      }
+      },
     };
   }
 

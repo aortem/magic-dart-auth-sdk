@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:ds_standard_features/ds_standard_features.dart' as http;
 
 /// AortemMagicLogoutByPublicAddress
-/// 
+///
 /// A class responsible for logging out users based on their public Ethereum-style address.
 /// It securely communicates with the Magic API to perform the logout operation.
-/// 
+///
 /// ## Features:
 /// - Validates public addresses before sending requests.
 /// - Supports an optional stub mode for testing.
@@ -44,7 +44,8 @@ class AortemMagicLogoutByPublicAddress {
   /// - Uses a mock response if `useStub` is enabled.
   /// - Throws an exception if the API request fails.
   Future<Map<String, dynamic>> logoutByPublicAddress(
-      String publicAddress) async {
+    String publicAddress,
+  ) async {
     if (!_isValidPublicAddress(publicAddress)) {
       throw ArgumentError("Invalid public address format.");
     }
@@ -68,7 +69,8 @@ class AortemMagicLogoutByPublicAddress {
       return jsonDecode(response.body);
     } else {
       throw Exception(
-          "Failed to log out: ${response.statusCode} - ${response.body}");
+        "Failed to log out: ${response.statusCode} - ${response.body}",
+      );
     }
   }
 
