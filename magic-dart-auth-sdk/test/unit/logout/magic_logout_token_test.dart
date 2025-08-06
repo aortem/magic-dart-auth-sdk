@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:ds_tools_testing/ds_tools_testing.dart';
 import 'package:ds_standard_features/ds_standard_features.dart' as http;
-import 'package:magic_dart_auth_sdk/src/logout/aortem_magic_logout_token.dart';
+import 'package:magic_dart_auth_sdk/src/logout/magic_logout_token.dart';
 
 class MockHttpClient extends Mock implements http.Client {}
 

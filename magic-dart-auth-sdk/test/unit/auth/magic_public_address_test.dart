@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:magic_dart_auth_sdk/src/auth/aortem_magic_public_address.dart';
+import 'package:magic_dart_auth_sdk/src/auth/magic_public_address.dart';
 import 'package:ds_tools_testing/ds_tools_testing.dart';
 
 void main() {

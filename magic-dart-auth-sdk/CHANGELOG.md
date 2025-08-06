@@ -2,8 +2,8 @@
 
 ### BREAKING CHANGES
 - **Rename prefix**: all files/folders and identifiers formerly using `aortem_` now use `magic_`.  
-- **Package rename**: adjusted `pubspec.yaml` `name:` from `aortem_magic_auth_sdk` to `magic_dart_auth_sdk`.  
-- **Import paths**: updated all `import 'package:aortem_magic_…'` → `import 'package:magic_…'`.
+- **Package rename**: adjusted `pubspec.yaml` `name:` from `magic_auth_sdk` to `magic_dart_auth_sdk`.  
+- **Import paths**: updated all `import 'package:magic_…'` → `import 'package:magic_…'`.
 
 ## 0.0.2
 
@@ -16,8 +16,8 @@
   - `_mockMetadataResponse(...)` in metadata service  
 - **style**: Clean up doc comments in `MagicTokenDecoder` (remove blank `///` lines for consistency).  
 - **test**: Reformat parameter lists and add trailing commas in unit tests:
-  - `test/unit/auth/aortem_magic_token_decode_test.dart`  
-  - `test/unit/utils/aortem_magic_parse_auth_header_test.dart`  
+  - `test/unit/auth/magic_token_decode_test.dart`  
+  - `test/unit/utils/magic_parse_auth_header_test.dart`  
 
 ## 0.0.1
 

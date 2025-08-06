@@ -1,5 +1,5 @@
 import 'package:ds_tools_testing/ds_tools_testing.dart';
-import 'package:magic_dart_auth_sdk/src/utils/aortem_magic_parse_auth_header.dart';
+import 'package:magic_dart_auth_sdk/src/utils/magic_parse_auth_header.dart';
 
 void main() {
   group('MagicUtils.parseAuthorizationHeader', () {

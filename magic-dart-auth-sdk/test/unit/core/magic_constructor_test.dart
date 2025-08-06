@@ -1,5 +1,5 @@
 import 'package:ds_tools_testing/ds_tools_testing.dart';
-import 'package:magic_dart_auth_sdk/src/core/aortem_magic_constructor.dart';
+import 'package:magic_dart_auth_sdk/src/core/magic_constructor.dart';
 
 void main() {
   group('MagicAuth Constructor Tests', () {

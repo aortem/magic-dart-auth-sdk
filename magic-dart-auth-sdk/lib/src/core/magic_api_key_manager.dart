@@ -1,4 +1,4 @@
-import '../utils/aortem_magic_secure_storage.dart';
+import '../utils/magic_secure_storage.dart';
 
 /// MagicAuthApiKeyManagement
 ///

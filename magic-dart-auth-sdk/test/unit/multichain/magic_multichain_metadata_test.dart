@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:ds_tools_testing/ds_tools_testing.dart';
 
 import 'package:ds_standard_features/ds_standard_features.dart' as http;
-import 'package:magic_dart_auth_sdk/src/multichain/aortem_magic_multichain_metadata.dart';
+import 'package:magic_dart_auth_sdk/src/multichain/magic_multichain_metadata.dart';
 
 class MockHttpClient extends Mock implements http.Client {}
 

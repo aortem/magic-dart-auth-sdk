@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:ds_tools_testing/ds_tools_testing.dart';
-import 'package:magic_dart_auth_sdk/src/auth/aortem_magic_token_validation.dart';
+import 'package:magic_dart_auth_sdk/src/auth/magic_token_validation.dart';
 
 void main() {
   group('TokenValidator.validate', () {
