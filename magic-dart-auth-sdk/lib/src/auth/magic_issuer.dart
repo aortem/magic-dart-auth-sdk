@@ -12,11 +12,11 @@ import 'dart:convert';
 /// ## Usage Example:
 /// ```dart
 /// String didToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tIn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-/// String issuer = AortemMagicIssuerExtractor.getIssuer(didToken, strict: true);
+/// String issuer = MagicIssuerExtractor.getIssuer(didToken, strict: true);
 /// print(issuer); // Outputs: https://example.com
 /// ```
 
-class AortemMagicIssuerExtractor {
+class MagicIssuerExtractor {
   /// Extracts the issuer (`iss`) from a DID Token.
   /// - [didToken]: The DID Token (JWT format).
   /// - [strict]: If `true`, enforces strict validation (must be a valid URL format).

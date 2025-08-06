@@ -6,12 +6,12 @@ import 'package:magic_dart_auth_sdk/src/metadata/aortem_magic_token_metadata.dar
 class MockHttpClient extends Mock implements http.Client {}
 
 void main() {
-  late AortemMagicUserMetadataByToken userMetadataByToken;
+  late MagicUserMetadataByToken userMetadataByToken;
   late MockHttpClient mockHttpClient;
 
   setUp(() {
     mockHttpClient = MockHttpClient();
-    userMetadataByToken = AortemMagicUserMetadataByToken(
+    userMetadataByToken = MagicUserMetadataByToken(
       apiKey: "test_api_key",
       client: mockHttpClient,
     );

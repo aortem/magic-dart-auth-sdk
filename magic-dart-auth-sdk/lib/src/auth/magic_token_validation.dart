@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-/// AortemMagicTokenValidator
+/// MagicTokenValidator
 ///
 /// A utility class for validating Decentralized Identifier (DID) Tokens (JWT format).
 /// Provides various validation options, including format checking, claim verification, and expiration handling.
@@ -14,11 +14,11 @@ import 'dart:convert';
 /// ## Usage Example:
 /// ```dart
 /// String didToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIweDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwIn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-/// bool isValid = AortemMagicTokenValidator.validate(didToken, checkClaims: true, checkExpiration: true);
+/// bool isValid = MagicTokenValidator.validate(didToken, checkClaims: true, checkExpiration: true);
 /// print(isValid); // Outputs: true if valid
 /// ```
 
-class AortemMagicTokenValidator {
+class MagicTokenValidator {
   /// Validates a DID Token (JWT format).
   /// - [didToken]: The DID Token.
   /// - [checkClaims]: If `true`, verifies required claims (`iss`, `sub`).

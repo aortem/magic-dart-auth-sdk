@@ -1,6 +1,6 @@
 import '../utils/aortem_magic_secure_storage.dart';
 
-/// AortemMagicAuthApiKeyManagement
+/// MagicAuthApiKeyManagement
 ///
 /// A class responsible for managing API keys securely within the Aortem Magic authentication system.
 /// It provides validation, hashing, and verification functionality.
@@ -12,18 +12,18 @@ import '../utils/aortem_magic_secure_storage.dart';
 ///
 /// ## Usage Example:
 /// ```dart
-/// var apiKeyManager = AortemMagicAuthApiKeyManagement('your-api-key');
+/// var apiKeyManager = MagicAuthApiKeyManagement('your-api-key');
 /// bool isValid = apiKeyManager.verifyApiKey('your-api-key');
 /// print(isValid); // Outputs: true if valid
 /// ```
 
-class AortemMagicAuthApiKeyManagement {
+class MagicAuthApiKeyManagement {
   /// Stores the hashed version of the API key.
   late String _hashedApiKey;
 
   /// Constructor to initialize with a validated API key.
   /// - [apiKey]: The API key to be stored securely.
-  AortemMagicAuthApiKeyManagement(String apiKey) {
+  MagicAuthApiKeyManagement(String apiKey) {
     setApiKey(apiKey);
   }
 
@@ -33,13 +33,13 @@ class AortemMagicAuthApiKeyManagement {
     if (apiKey.isEmpty || !_validateApiKey(apiKey)) {
       throw ArgumentError('Invalid API key.');
     }
-    _hashedApiKey = AortemMagicSecureStorage.hashApiKey(apiKey);
+    _hashedApiKey = MagicSecureStorage.hashApiKey(apiKey);
   }
 
   /// Verifies if the provided API key matches the stored hashed API key.
   /// - Returns `true` if the input key is valid, otherwise `false`.
   bool verifyApiKey(String inputKey) {
-    return AortemMagicSecureStorage.validateApiKey(inputKey, _hashedApiKey);
+    return MagicSecureStorage.validateApiKey(inputKey, _hashedApiKey);
   }
 
   /// Ensures the API key follows a strict format.

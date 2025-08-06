@@ -23,7 +23,7 @@ class _DidTokenPublicAddressScreenState
     });
 
     try {
-      final address = AortemMagicPublicAddressExtractor.getPublicAddress(
+      final address = MagicPublicAddressExtractor.getPublicAddress(
         _didTokenController.text.trim(),
         strict: _isStrict,
       );

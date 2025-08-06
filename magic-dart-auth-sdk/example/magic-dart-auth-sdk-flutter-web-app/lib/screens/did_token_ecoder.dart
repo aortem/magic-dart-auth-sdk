@@ -21,7 +21,7 @@ class _DidTokenDecoderScreenState extends State<DidTokenDecoderScreen> {
     });
 
     try {
-      final payload = AortemMagicTokenDecoder.decode(
+      final payload = MagicTokenDecoder.decode(
         _didTokenController.text.trim(),
         verify: _verify,
       );

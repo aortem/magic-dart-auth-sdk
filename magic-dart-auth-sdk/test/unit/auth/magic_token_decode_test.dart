@@ -20,28 +20,25 @@ void main() {
 
     test('Decodes valid DID Token without verification', () {
       final didToken = generateDidToken(validPayload);
-      final result = AortemMagicTokenDecoder.decode(didToken);
+      final result = MagicTokenDecoder.decode(didToken);
       expect(result['iss'], equals('https://auth.magic.com'));
       expect(result['sub'], equals('0x123456789abcdef'));
     });
 
     test('Decodes valid DID Token with verification', () {
       final didToken = generateDidToken(validPayload);
-      final result = AortemMagicTokenDecoder.decode(didToken, verify: true);
+      final result = MagicTokenDecoder.decode(didToken, verify: true);
       expect(result['iss'], equals('https://auth.magic.com'));
       expect(result['sub'], equals('0x123456789abcdef'));
     });
 
     test('Throws error for empty DID Token', () {
-      expect(
-        () => AortemMagicTokenDecoder.decode(''),
-        throwsA(isA<ArgumentError>()),
-      );
+      expect(() => MagicTokenDecoder.decode(''), throwsA(isA<ArgumentError>()));
     });
 
     test('Throws error for invalid JWT format', () {
       expect(
-        () => AortemMagicTokenDecoder.decode('invalid.token'),
+        () => MagicTokenDecoder.decode('invalid.token'),
         throwsA(isA<FormatException>()),
       );
     });
@@ -51,7 +48,7 @@ void main() {
       final didToken = generateDidToken(invalidPayload);
 
       expect(
-        () => AortemMagicTokenDecoder.decode(didToken, verify: true),
+        () => MagicTokenDecoder.decode(didToken, verify: true),
         throwsA(isA<FormatException>()),
       );
     });
@@ -61,7 +58,7 @@ void main() {
       final didToken = generateDidToken(invalidPayload);
 
       expect(
-        () => AortemMagicTokenDecoder.decode(didToken, verify: true),
+        () => MagicTokenDecoder.decode(didToken, verify: true),
         throwsA(isA<FormatException>()),
       );
     });
@@ -72,7 +69,7 @@ void main() {
         final invalidPayload = '{}';
         final didToken = generateDidToken(invalidPayload);
 
-        final result = AortemMagicTokenDecoder.decode(didToken, verify: false);
+        final result = MagicTokenDecoder.decode(didToken, verify: false);
         expect(result, isEmpty);
       },
     );

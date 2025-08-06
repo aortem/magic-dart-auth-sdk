@@ -6,7 +6,7 @@ void main() {
     test('Extracts token from a valid Authorization header', () {
       const header = 'Bearer abc123tokenXYZ';
       expect(
-        AortemMagicAuthHeaderParse.parseAuthorizationHeader(header),
+        MagicAuthHeaderParse.parseAuthorizationHeader(header),
         equals('abc123tokenXYZ'),
       );
     });
@@ -14,14 +14,14 @@ void main() {
     test('Handles extra spaces in Authorization header', () {
       const header = '   Bearer    abc123tokenXYZ   ';
       expect(
-        AortemMagicAuthHeaderParse.parseAuthorizationHeader(header),
+        MagicAuthHeaderParse.parseAuthorizationHeader(header),
         equals('abc123tokenXYZ'),
       );
     });
 
     test('Throws ArgumentError for empty header', () {
       expect(
-        () => AortemMagicAuthHeaderParse.parseAuthorizationHeader(''),
+        () => MagicAuthHeaderParse.parseAuthorizationHeader(''),
         throwsArgumentError,
       );
     });
@@ -29,7 +29,7 @@ void main() {
     test('Throws ArgumentError for missing Bearer prefix', () {
       const header = 'Token abc123tokenXYZ';
       expect(
-        () => AortemMagicAuthHeaderParse.parseAuthorizationHeader(header),
+        () => MagicAuthHeaderParse.parseAuthorizationHeader(header),
         throwsArgumentError,
       );
     });
@@ -37,7 +37,7 @@ void main() {
     test('Throws ArgumentError for malformed header', () {
       const header = 'Bearer123tokenXYZ';
       expect(
-        () => AortemMagicAuthHeaderParse.parseAuthorizationHeader(header),
+        () => MagicAuthHeaderParse.parseAuthorizationHeader(header),
         throwsArgumentError,
       );
     });
@@ -45,7 +45,7 @@ void main() {
     test('Throws ArgumentError for multiple spaces but no valid token', () {
       const header = 'Bearer   ';
       expect(
-        () => AortemMagicAuthHeaderParse.parseAuthorizationHeader(header),
+        () => MagicAuthHeaderParse.parseAuthorizationHeader(header),
         throwsArgumentError,
       );
     });

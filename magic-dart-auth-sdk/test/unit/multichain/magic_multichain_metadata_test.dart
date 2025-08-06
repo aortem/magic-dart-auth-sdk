@@ -8,12 +8,12 @@ import 'package:magic_dart_auth_sdk/src/multichain/aortem_magic_multichain_metad
 class MockHttpClient extends Mock implements http.Client {}
 
 void main() {
-  late AortemMagicMultichainMetadataService metadataService;
+  late MagicMultichainMetadataService metadataService;
   late MockHttpClient mockHttpClient;
 
   setUp(() {
     mockHttpClient = MockHttpClient();
-    metadataService = AortemMagicMultichainMetadataService(
+    metadataService = MagicMultichainMetadataService(
       apiKey: "test_api_key",
       client: mockHttpClient,
     );
@@ -75,7 +75,7 @@ void main() {
   });
 
   test("Returns mock response when useStub is true", () async {
-    final stubMetadataService = AortemMagicMultichainMetadataService(
+    final stubMetadataService = MagicMultichainMetadataService(
       apiKey: "test_api_key",
       useStub: true,
     );

@@ -7,12 +7,12 @@ import 'package:magic_dart_auth_sdk/src/logout/aortem_magic_logout_address.dart'
 class MockHttpClient extends Mock implements http.Client {}
 
 void main() {
-  late AortemMagicLogoutByPublicAddress logoutService;
+  late MagicLogoutByPublicAddress logoutService;
   late MockHttpClient mockHttpClient;
 
   setUp(() {
     mockHttpClient = MockHttpClient();
-    logoutService = AortemMagicLogoutByPublicAddress(
+    logoutService = MagicLogoutByPublicAddress(
       apiKey: "test_api_key",
       client: mockHttpClient,
     );
@@ -67,7 +67,7 @@ void main() {
   });
 
   test("Returns mock response when useStub is true", () async {
-    final stubLogoutService = AortemMagicLogoutByPublicAddress(
+    final stubLogoutService = MagicLogoutByPublicAddress(
       apiKey: "test_api_key",
       useStub: true,
     );

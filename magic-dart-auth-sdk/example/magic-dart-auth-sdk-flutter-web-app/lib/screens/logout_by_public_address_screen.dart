@@ -15,12 +15,12 @@ class _LogoutByPublicAddressScreenState
   String _result = '';
   bool _loading = false;
 
-  late final AortemMagicLogoutByPublicAddress _magicLogout;
+  late final MagicLogoutByPublicAddress _magicLogout;
 
   @override
   void initState() {
     super.initState();
-    _magicLogout = AortemMagicLogoutByPublicAddress(
+    _magicLogout = MagicLogoutByPublicAddress(
       apiKey: 'sk_live_8B21F43F636C437F', // Replace with your valid key
       apiBaseUrl: 'https://api.magic.link', // or your proxy
       useStub: false, // Set to true to test stub behavior

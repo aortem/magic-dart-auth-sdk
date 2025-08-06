@@ -17,9 +17,7 @@ class _AuthHeaderTestScreenState extends State<AuthHeaderTestScreen> {
     final input = _headerController.text.trim();
     setState(() {
       try {
-        final token = AortemMagicAuthHeaderParse.parseAuthorizationHeader(
-          input,
-        );
+        final token = MagicAuthHeaderParse.parseAuthorizationHeader(input);
         _result = '✅ Extracted Token:\n\n$token';
         _error = false;
       } catch (e) {

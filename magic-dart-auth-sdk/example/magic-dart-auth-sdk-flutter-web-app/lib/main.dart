@@ -85,7 +85,7 @@ class MagicHomePage extends StatelessWidget {
                 },
               ),
               FeatureButton(
-                title: "AortemMagicIssuerExtractor",
+                title: "MagicIssuerExtractor",
                 description:
                     "Issuer extraction from a DID token with both strict and loose validation modes",
                 onPressed: () {
@@ -98,9 +98,9 @@ class MagicHomePage extends StatelessWidget {
                 },
               ),
               FeatureButton(
-                title: "AortemMagicTokenDecoder",
+                title: "MagicTokenDecoder",
                 description:
-                    "AortemMagicTokenDecoder.decode() method with optional verification toggle",
+                    "MagicTokenDecoder.decode() method with optional verification toggle",
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -111,7 +111,7 @@ class MagicHomePage extends StatelessWidget {
                 },
               ),
               FeatureButton(
-                title: "AortemMagicTokenValidator",
+                title: "MagicTokenValidator",
                 description:
                     "validation approaches (optional parameter method and separate methods) for a DID token",
                 onPressed: () {
@@ -124,7 +124,7 @@ class MagicHomePage extends StatelessWidget {
                 },
               ),
               FeatureButton(
-                title: "AortemMagicUserMetaDataByIssuer",
+                title: "MagicUserMetaDataByIssuer",
                 description:
                     "getMetadataByIssuer with toggleable Live vs Stub mode, issuer input, and result preview",
                 onPressed: () {
@@ -139,7 +139,7 @@ class MagicHomePage extends StatelessWidget {
                 },
               ),
               FeatureButton(
-                title: "AortemMagicUserMetadataByPublicAddress",
+                title: "MagicUserMetadataByPublicAddress",
                 description:
                     "getMetadataByPublicAddress SDK feature, including stub support and error handling.",
                 onPressed: () {
@@ -154,7 +154,7 @@ class MagicHomePage extends StatelessWidget {
                 },
               ),
               FeatureButton(
-                title: "AortemMagicUserMetadataByToken",
+                title: "MagicUserMetadataByToken",
                 description:
                     "getMetadataByToken SDK feature, with stub & HTTP support.",
                 onPressed: () {
@@ -196,7 +196,7 @@ class MagicHomePage extends StatelessWidget {
                 },
               ),
               FeatureButton(
-                title: "AortemMagicLogoutByToken",
+                title: "MagicLogoutByToken",
                 description:
                     "logoutByToken SDK feature with stub and live modes.",
                 onPressed: () {
@@ -222,7 +222,7 @@ class MagicHomePage extends StatelessWidget {
                 },
               ),
               FeatureButton(
-                title: "AortemMagicAuthHeaderParse",
+                title: "MagicAuthHeaderParse",
                 description:
                     "parsing an HTTP Authorization header and extracting the token from it",
                 onPressed: () {

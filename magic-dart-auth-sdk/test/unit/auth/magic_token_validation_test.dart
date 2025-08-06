@@ -26,16 +26,13 @@ void main() {
       'Validates a properly formatted DID Token without additional checks',
       () {
         final didToken = generateDidToken(validPayload);
-        expect(AortemMagicTokenValidator.validate(didToken), isTrue);
+        expect(MagicTokenValidator.validate(didToken), isTrue);
       },
     );
 
     test('Validates a DID Token with required claims', () {
       final didToken = generateDidToken(validPayload);
-      expect(
-        AortemMagicTokenValidator.validate(didToken, checkClaims: true),
-        isTrue,
-      );
+      expect(MagicTokenValidator.validate(didToken, checkClaims: true), isTrue);
     });
 
     test('Throws error if "iss" field is missing', () {
@@ -43,7 +40,7 @@ void main() {
       final didToken = generateDidToken(invalidPayload);
 
       expect(
-        () => AortemMagicTokenValidator.validate(didToken, checkClaims: true),
+        () => MagicTokenValidator.validate(didToken, checkClaims: true),
         throwsA(isA<FormatException>()),
       );
     });
@@ -53,7 +50,7 @@ void main() {
       final didToken = generateDidToken(invalidPayload);
 
       expect(
-        () => AortemMagicTokenValidator.validate(didToken, checkClaims: true),
+        () => MagicTokenValidator.validate(didToken, checkClaims: true),
         throwsA(isA<FormatException>()),
       );
     });
@@ -62,8 +59,7 @@ void main() {
       final didToken = generateDidToken(expiredPayload);
 
       expect(
-        () =>
-            AortemMagicTokenValidator.validate(didToken, checkExpiration: true),
+        () => MagicTokenValidator.validate(didToken, checkExpiration: true),
         throwsA(isA<FormatException>()),
       );
     });
@@ -71,19 +67,19 @@ void main() {
     test('Passes validation if token is not expired', () {
       final didToken = generateDidToken(validPayload);
       expect(
-        AortemMagicTokenValidator.validate(didToken, checkExpiration: true),
+        MagicTokenValidator.validate(didToken, checkExpiration: true),
         isTrue,
       );
     });
 
     test('Basic validation checks only format', () {
       final didToken = generateDidToken(validPayload);
-      expect(AortemMagicTokenValidator.basicValidate(didToken), isTrue);
+      expect(MagicTokenValidator.basicValidate(didToken), isTrue);
     });
 
     test('Full validation checks format, claims, and expiration', () {
       final didToken = generateDidToken(validPayload);
-      expect(AortemMagicTokenValidator.fullValidate(didToken), isTrue);
+      expect(MagicTokenValidator.fullValidate(didToken), isTrue);
     });
   });
 }

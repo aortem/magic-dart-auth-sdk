@@ -11,13 +11,13 @@ class ApiKeyTestScreen extends StatefulWidget {
 class _ApiKeyTestScreenState extends State<ApiKeyTestScreen> {
   final TextEditingController _apiKeyController = TextEditingController();
   final TextEditingController _verifyKeyController = TextEditingController();
-  AortemMagicAuthApiKeyManagement? _apiManager;
+  MagicAuthApiKeyManagement? _apiManager;
   String _statusMessage = '';
 
   void _initializeSdk() {
     final inputKey = _apiKeyController.text.trim();
     try {
-      final manager = AortemMagicAuthApiKeyManagement(inputKey);
+      final manager = MagicAuthApiKeyManagement(inputKey);
       setState(() {
         _apiManager = manager;
         _statusMessage = 'SDK initialized successfully.';

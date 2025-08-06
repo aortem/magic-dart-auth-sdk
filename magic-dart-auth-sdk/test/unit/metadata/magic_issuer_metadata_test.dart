@@ -8,7 +8,7 @@ import 'package:ds_standard_features/ds_standard_features.dart' as http;
 class MockHttpClient extends Mock implements http.Client {}
 
 void main() {
-  late AortemMagicUserMetaDataByIssuer userMetadata;
+  late MagicUserMetaDataByIssuer userMetadata;
   late MockHttpClient mockHttpClient;
 
   const String apiKey = "test_api_key";
@@ -21,7 +21,7 @@ void main() {
 
   setUp(() {
     mockHttpClient = MockHttpClient();
-    userMetadata = AortemMagicUserMetaDataByIssuer(
+    userMetadata = MagicUserMetaDataByIssuer(
       apiKey: apiKey,
       apiBaseUrl: apiBaseUrl,
       client: mockHttpClient,

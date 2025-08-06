@@ -15,12 +15,12 @@ class _LogoutByTokenScreenState extends State<LogoutByTokenScreen> {
   bool _loading = false;
   bool _useStub = false;
 
-  late final AortemMagicLogoutByToken _logoutHandler;
+  late final MagicLogoutByToken _logoutHandler;
 
   @override
   void initState() {
     super.initState();
-    _logoutHandler = AortemMagicLogoutByToken(
+    _logoutHandler = MagicLogoutByToken(
       apiKey: 'sk_live_8B21F43F636C437F', // 🔒 Replace with your key securely
       apiBaseUrl: 'https://api.magic.link', // 🔁 Can be proxy/backend endpoint
       useStub: _useStub,
@@ -77,7 +77,7 @@ class _LogoutByTokenScreenState extends State<LogoutByTokenScreen> {
                   onChanged: (val) {
                     setState(() {
                       _useStub = val;
-                      _logoutHandler = AortemMagicLogoutByToken(
+                      _logoutHandler = MagicLogoutByToken(
                         apiKey: 'sk_live_8B21F43F636C437F',
                         apiBaseUrl: 'https://api.magic.link',
                         useStub: _useStub,

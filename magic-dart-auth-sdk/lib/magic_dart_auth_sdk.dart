@@ -12,7 +12,7 @@ export 'src/metadata/aortem_magic_token_metadata.dart';
 // Authentication
 export 'src/auth/aortem_magic_token_validation.dart';
 export 'src/auth/aortem_magic_token_decode.dart';
-export 'src/auth/aortem_magic_issuer.dart';
+export 'src/auth/magic_issuer.dart';
 export 'src/auth/aortem_magic_public_address.dart';
 
 // Logout
