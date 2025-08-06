@@ -1,3 +1,10 @@
+## 0.0.3
+
+### BREAKING CHANGES
+- **Rename prefix**: all files/folders and identifiers formerly using `aortem_` now use `magic_`.  
+- **Package rename**: adjusted `pubspec.yaml` `name:` from `aortem_magic_auth_sdk` to `magic_dart_auth_sdk`.  
+- **Import paths**: updated all `import 'package:aortem_magic_…'` → `import 'package:magic_…'`.
+
 ## 0.0.2
 
 - **chore**: Remove `ui-debug.log` from the package to avoid committing emulator logs.
