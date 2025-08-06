@@ -5,7 +5,7 @@ import 'package:ds_standard_features/ds_standard_features.dart' as http;
 ///
 /// This service provides methods to fetch metadata using different identifiers,
 /// including issuer, public address, and token, in combination with a wallet identifier.
-class AortemMagicMultichainMetadataService {
+class MagicMultichainMetadataService {
   /// The API key used for authentication with the metadata service.
   final String apiKey;
 
@@ -18,12 +18,12 @@ class AortemMagicMultichainMetadataService {
   /// Determines whether to use stub data instead of making real API calls.
   final bool useStub;
 
-  /// Creates an instance of [AortemMagicMultichainMetadataService].
+  /// Creates an instance of [MagicMultichainMetadataService].
   ///
   /// The [apiKey] is required for authentication. The [apiBaseUrl] defaults to "https://api.magic.com".
   /// An optional [client] can be provided for dependency injection, and [useStub] allows returning
   /// mock responses for testing.
-  AortemMagicMultichainMetadataService({
+  MagicMultichainMetadataService({
     required this.apiKey,
     this.apiBaseUrl = "https://api.magic.com",
     http.Client? client,

@@ -18,12 +18,12 @@ class _MultichainMetadataScreenState extends State<MultichainMetadataScreen> {
   String _result = '';
   bool _isLoading = false;
 
-  late AortemMagicMultichainMetadataService metadataService;
+  late MagicMultichainMetadataService metadataService;
 
   @override
   void initState() {
     super.initState();
-    metadataService = AortemMagicMultichainMetadataService(
+    metadataService = MagicMultichainMetadataService(
       apiKey: 'your-real-or-test-api-key',
       useStub: true, // Set true to test stub response
     );

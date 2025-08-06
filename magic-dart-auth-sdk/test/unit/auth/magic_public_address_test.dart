@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:magic_dart_auth_sdk/src/auth/aortem_magic_public_address.dart';
+import 'package:magic_dart_auth_sdk/src/auth/magic_public_address.dart';
 import 'package:ds_tools_testing/ds_tools_testing.dart';
 
 void main() {
@@ -19,7 +19,7 @@ void main() {
 
     test('Extracts public address with strict validation - valid case', () {
       final didToken = generateDidToken(validEthAddress);
-      final result = AortemMagicPublicAddressExtractor.getPublicAddress(
+      final result = MagicPublicAddressExtractor.getPublicAddress(
         didToken,
         strict: true,
       );
@@ -28,7 +28,7 @@ void main() {
 
     test('Extracts public address with loose validation - valid case', () {
       final didToken = generateDidToken(validEthAddress);
-      final result = AortemMagicPublicAddressExtractor.getPublicAddress(
+      final result = MagicPublicAddressExtractor.getPublicAddress(
         didToken,
         strict: false,
       );
@@ -37,17 +37,14 @@ void main() {
 
     test('Throws error for empty DID Token', () {
       expect(
-        () => AortemMagicPublicAddressExtractor.getPublicAddress(
-          '',
-          strict: true,
-        ),
+        () => MagicPublicAddressExtractor.getPublicAddress('', strict: true),
         throwsA(isA<ArgumentError>()),
       );
     });
 
     test('Throws error for invalid JWT format', () {
       expect(
-        () => AortemMagicPublicAddressExtractor.getPublicAddress(
+        () => MagicPublicAddressExtractor.getPublicAddress(
           'invalid.token',
           strict: true,
         ),
@@ -63,7 +60,7 @@ void main() {
       final invalidToken = '$header.$payload.signature';
 
       expect(
-        () => AortemMagicPublicAddressExtractor.getPublicAddress(
+        () => MagicPublicAddressExtractor.getPublicAddress(
           invalidToken,
           strict: true,
         ),
@@ -74,7 +71,7 @@ void main() {
     test('Throws error for invalid Ethereum address in strict mode', () {
       final didToken = generateDidToken('0xInvalidEthAddress');
       expect(
-        () => AortemMagicPublicAddressExtractor.getPublicAddress(
+        () => MagicPublicAddressExtractor.getPublicAddress(
           didToken,
           strict: true,
         ),
@@ -85,7 +82,7 @@ void main() {
     test('Accepts loosely formatted Ethereum address in loose mode', () {
       final looseEthAddress = '0xabc';
       final didToken = generateDidToken(looseEthAddress);
-      final result = AortemMagicPublicAddressExtractor.getPublicAddress(
+      final result = MagicPublicAddressExtractor.getPublicAddress(
         didToken,
         strict: false,
       );
@@ -95,7 +92,7 @@ void main() {
     test('Throws error for invalid Ethereum address in loose mode', () {
       final didToken = generateDidToken('InvalidAddress');
       expect(
-        () => AortemMagicPublicAddressExtractor.getPublicAddress(
+        () => MagicPublicAddressExtractor.getPublicAddress(
           didToken,
           strict: false,
         ),

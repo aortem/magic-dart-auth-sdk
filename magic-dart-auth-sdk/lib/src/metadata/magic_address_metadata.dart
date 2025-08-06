@@ -17,7 +17,7 @@ import 'package:ds_standard_features/ds_standard_features.dart' as http;
 /// var metadata = await metadataHandler.getMetadataByPublicAddress('user-public-address');
 /// print(metadata);
 /// ```
-class AortemMagicUserMetadataByPublicAddress {
+class MagicUserMetadataByPublicAddress {
   /// API key required for authentication.
   final String apiKey;
 
@@ -30,7 +30,7 @@ class AortemMagicUserMetadataByPublicAddress {
   /// Constructor for initializing the metadata handler.
   /// - Accepts an optional `client` for dependency injection (useful for testing).
   /// - Defaults `apiBaseUrl` to "https://api.magic.com".
-  AortemMagicUserMetadataByPublicAddress({
+  MagicUserMetadataByPublicAddress({
     required this.apiKey,
     this.apiBaseUrl = "https://api.magic.link",
     http.Client? client,

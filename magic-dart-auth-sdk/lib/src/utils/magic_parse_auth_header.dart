@@ -1,5 +1,5 @@
 /// Utility class for handling Authorization headers.
-class AortemMagicAuthHeaderParse {
+class MagicAuthHeaderParse {
   /// Parses the [authorizationHeader] and extracts the token.
   ///
   /// This method expects the header to be in the format: `"Bearer <token>"`.

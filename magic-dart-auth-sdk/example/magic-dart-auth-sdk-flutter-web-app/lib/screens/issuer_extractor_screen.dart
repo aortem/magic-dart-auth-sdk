@@ -26,10 +26,7 @@ class _IssuerExtractorScreenState extends State<IssuerExtractorScreen> {
     });
 
     try {
-      final issuer = AortemMagicIssuerExtractor.getIssuer(
-        token,
-        strict: _strictMode,
-      );
+      final issuer = MagicIssuerExtractor.getIssuer(token, strict: _strictMode);
       setState(() {
         _issuerResult = issuer;
       });

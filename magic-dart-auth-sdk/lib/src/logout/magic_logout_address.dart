@@ -1,22 +1,22 @@
 import 'dart:convert';
 import 'package:ds_standard_features/ds_standard_features.dart' as http;
 
-/// AortemMagicLogoutByIssuer
+/// MagicLogoutByPublicAddress
 ///
-/// A class responsible for logging out users based on their issuer identifier.
+/// A class responsible for logging out users based on their public Ethereum-style address.
 /// It securely communicates with the Magic API to perform the logout operation.
 ///
 /// ## Features:
-/// - Ensures the issuer is valid before sending requests.
+/// - Validates public addresses before sending requests.
 /// - Supports an optional stub mode for testing.
 /// - Handles API responses and errors gracefully.
 ///
 /// ## Usage Example:
 /// ```dart
-/// var logoutHandler = AortemMagicLogoutByIssuer(apiKey: 'your-api-key');
-/// await logoutHandler.logoutByIssuer('issuer-identifier');
+/// var logoutHandler = MagicLogoutByPublicAddress(apiKey: 'your-api-key');
+/// await logoutHandler.logoutByPublicAddress('0x1234567890abcdef1234567890abcdef12345678');
 /// ```
-class AortemMagicLogoutByIssuer {
+class MagicLogoutByPublicAddress {
   /// API key required for authentication.
   final String apiKey;
 
@@ -32,24 +32,26 @@ class AortemMagicLogoutByIssuer {
   /// Constructor for initializing the logout handler.
   /// - Accepts an optional `client` for dependency injection (useful for testing).
   /// - Defaults `apiBaseUrl` to "https://api.magic.com".
-  AortemMagicLogoutByIssuer({
+  MagicLogoutByPublicAddress({
     required this.apiKey,
     this.apiBaseUrl = "https://api.magic.com",
     http.Client? client,
     this.useStub = false,
   }) : client = client ?? http.Client();
 
-  /// Logs out a user based on their issuer identifier.
-  /// - Ensures the issuer is not empty before sending the request.
+  /// Logs out a user based on their public Ethereum address.
+  /// - Validates the address format before sending the request.
   /// - Uses a mock response if `useStub` is enabled.
   /// - Throws an exception if the API request fails.
-  Future<Map<String, dynamic>> logoutByIssuer(String issuer) async {
-    if (issuer.isEmpty) {
-      throw ArgumentError("Issuer cannot be empty.");
+  Future<Map<String, dynamic>> logoutByPublicAddress(
+    String publicAddress,
+  ) async {
+    if (!_isValidPublicAddress(publicAddress)) {
+      throw ArgumentError("Invalid public address format.");
     }
 
     if (useStub) {
-      return _mockLogoutResponse(issuer);
+      return _mockLogoutResponse(publicAddress);
     }
 
     final uri = Uri.parse("$apiBaseUrl/v1/user/logout");
@@ -60,7 +62,7 @@ class AortemMagicLogoutByIssuer {
         "Authorization": "Bearer $apiKey",
         "Content-Type": "application/json",
       },
-      body: jsonEncode({"issuer": issuer}),
+      body: jsonEncode({"publicAddress": publicAddress}),
     );
 
     if (response.statusCode == 200) {
@@ -73,11 +75,20 @@ class AortemMagicLogoutByIssuer {
   }
 
   /// Generates a mock response for logout operations (useful for testing).
-  /// - Returns a success message for the provided `issuer`.
-  Map<String, dynamic> _mockLogoutResponse(String issuer) {
+  /// - Returns a success message for the provided `publicAddress`.
+  Map<String, dynamic> _mockLogoutResponse(String publicAddress) {
     return {
       "success": true,
-      "message": "User with issuer $issuer logged out successfully.",
+      "message":
+          "User with public address $publicAddress logged out successfully.",
     };
+  }
+
+  /// Validates an Ethereum-style public address.
+  /// - The address must start with "0x" followed by 40 hexadecimal characters.
+  /// - Returns `true` if the address is valid, otherwise `false`.
+  bool _isValidPublicAddress(String address) {
+    final regex = RegExp(r"^0x[a-fA-F0-9]{40}$");
+    return regex.hasMatch(address);
   }
 }

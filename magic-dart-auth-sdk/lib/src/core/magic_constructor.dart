@@ -1,4 +1,4 @@
-/// AortemMagicAuth
+/// MagicAuth
 ///
 /// A class responsible for handling API key authentication securely within the Aortem Magic authentication system.
 /// It ensures proper validation and allows secure storage and retrieval of API keys.
@@ -10,11 +10,11 @@
 ///
 /// ## Usage Example:
 /// ```dart
-/// var auth = AortemMagicAuth('your-api-key');
+/// var auth = MagicAuth('your-api-key');
 /// print(auth.apiKey); // Outputs the stored API key
 /// auth.updateApiKey('new-api-key');
 /// ```
-class AortemMagicAuth {
+class MagicAuth {
   /// Stores the API key securely.
   late String _apiKey; // Use 'late' to ensure it gets initialized
 
@@ -23,7 +23,7 @@ class AortemMagicAuth {
 
   /// Constructor with API key validation.
   /// - Throws an [ArgumentError] if the API key is invalid.
-  AortemMagicAuth(String apiKey) {
+  MagicAuth(String apiKey) {
     if (apiKey.isEmpty || !_validateApiKey(apiKey)) {
       throw ArgumentError('Invalid API key.');
     }

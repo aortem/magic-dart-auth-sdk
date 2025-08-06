@@ -25,7 +25,7 @@ class _GetMetadataByTokenScreenState extends State<GetMetadataByTokenScreen> {
       return;
     }
 
-    final client = AortemMagicUserMetadataByToken(apiKey: widget.apiKey);
+    final client = MagicUserMetadataByToken(apiKey: widget.apiKey);
 
     setState(() {
       _loading = true;

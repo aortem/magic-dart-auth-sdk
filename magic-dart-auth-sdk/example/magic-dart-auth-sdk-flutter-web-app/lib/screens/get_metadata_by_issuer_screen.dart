@@ -25,7 +25,7 @@ class _GetMetadataByIssuerScreenState extends State<GetMetadataByIssuerScreen> {
       throw ArgumentError("Issuer must start with https://");
     }
 
-    final client = AortemMagicUserMetaDataByIssuer(apiKey: widget.apiKey);
+    final client = MagicUserMetaDataByIssuer(apiKey: widget.apiKey);
 
     setState(() {
       _loading = true;

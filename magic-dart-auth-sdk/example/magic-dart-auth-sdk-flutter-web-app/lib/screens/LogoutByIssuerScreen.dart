@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:ds_standard_features/ds_standard_features.dart' as http;
 import 'dart:convert';
 
-class AortemMagicLogoutByIssuer {
+class MagicLogoutByIssuer {
   final String apiKey;
   final String apiBaseUrl;
   final http.Client client;
   final bool useStub;
 
-  AortemMagicLogoutByIssuer({
+  MagicLogoutByIssuer({
     required this.apiKey,
     this.apiBaseUrl = "https://api.magic.com",
     http.Client? client,
@@ -74,10 +74,7 @@ class _LogoutByIssuerScreenState extends State<LogoutByIssuerScreen> {
     });
 
     try {
-      final sdk = AortemMagicLogoutByIssuer(
-        apiKey: widget.apiKey,
-        useStub: isStub,
-      );
+      final sdk = MagicLogoutByIssuer(apiKey: widget.apiKey, useStub: isStub);
 
       final response = await sdk.logoutByIssuer(issuerController.text.trim());
 
