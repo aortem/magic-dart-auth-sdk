@@ -18,7 +18,7 @@ class _MagicConstructorScreenState extends State<MagicConstructorScreen> {
   void _initializeSdk() {
     final apiKey = _apiKeyController.text.trim();
     try {
-      final magic = AortemMagicAuth(apiKey);
+      final magic = MagicAuth(apiKey);
       setState(() {
         _result = '✅ SDK initialized with API key: ${magic.apiKey}';
       });

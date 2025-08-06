@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-/// AortemMagicTokenDecoder
+/// MagicTokenDecoder
 ///
 /// A utility class for decoding Decentralized Identifier (DID) Tokens (JWT format).
 /// It extracts the payload and optionally verifies required claims.
@@ -13,10 +13,10 @@ import 'dart:convert';
 /// ## Usage Example:
 /// ```dart
 /// String didToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tIiwic3ViIjoiMHgxMjM0NTY3ODlhYmNkZWYiLCJleHAiOjE2NjAwMDAwMDB9.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-/// Map<String, dynamic> payload = AortemMagicTokenDecoder.decode(didToken, verify: true);
+/// Map<String, dynamic> payload = MagicTokenDecoder.decode(didToken, verify: true);
 /// print(payload); // Outputs decoded payload
 /// ```
-class AortemMagicTokenDecoder {
+class MagicTokenDecoder {
   /// Decodes a DID Token (JWT format) and returns the payload as a Map.
   /// - [didToken]: The DID Token (JWT format).
   /// - [verify]: If `true`, ensures required fields (`iss`, `sub`) are present.

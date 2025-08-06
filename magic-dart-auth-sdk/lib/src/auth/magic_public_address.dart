@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-/// AortemMagicPublicAddressExtractor
+/// MagicPublicAddressExtractor
 ///
 /// A utility class for extracting the public address from a Decentralized Identifier (DID) Token.
 /// This class provides strict and loose validation modes to ensure the extracted address follows the expected format.
@@ -14,11 +14,11 @@ import 'dart:convert';
 /// ## Usage Example:
 /// ```dart
 /// String didToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIweDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwIn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-/// String publicAddress = AortemMagicPublicAddressExtractor.getPublicAddress(didToken, strict: true);
+/// String publicAddress = MagicPublicAddressExtractor.getPublicAddress(didToken, strict: true);
 /// print(publicAddress); // Outputs: 0x123456789abcdef0123456789abcdef0123456789
 /// ```
 
-class AortemMagicPublicAddressExtractor {
+class MagicPublicAddressExtractor {
   /// Extracts the public address from a DID Token without external dependencies.
   /// - [didToken]: The DID Token (JWT format).
   /// - [strict]: If `true`, enforces strict Ethereum address validation.

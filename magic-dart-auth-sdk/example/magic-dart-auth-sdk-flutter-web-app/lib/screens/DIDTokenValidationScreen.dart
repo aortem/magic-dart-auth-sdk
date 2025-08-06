@@ -32,12 +32,12 @@ class _DIDTokenValidationScreenState extends State<DIDTokenValidationScreen> {
       bool isValid;
       if (useSeparateMethods) {
         if (checkClaims || checkExpiration) {
-          isValid = AortemMagicTokenValidator.fullValidate(token);
+          isValid = MagicTokenValidator.fullValidate(token);
         } else {
-          isValid = AortemMagicTokenValidator.basicValidate(token);
+          isValid = MagicTokenValidator.basicValidate(token);
         }
       } else {
-        isValid = AortemMagicTokenValidator.validate(
+        isValid = MagicTokenValidator.validate(
           token,
           checkClaims: checkClaims,
           checkExpiration: checkExpiration,

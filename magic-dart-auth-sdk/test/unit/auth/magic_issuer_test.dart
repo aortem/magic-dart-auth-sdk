@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:ds_tools_testing/ds_tools_testing.dart';
-import 'package:magic_dart_auth_sdk/src/auth/aortem_magic_issuer.dart';
+import 'package:magic_dart_auth_sdk/src/auth/magic_issuer.dart';
 
 void main() {
   group('IssuerExtractor.getIssuer', () {
@@ -19,33 +19,26 @@ void main() {
 
     test('Extracts issuer with strict validation - valid case', () {
       final didToken = generateDidToken(validIssuer);
-      final result = AortemMagicIssuerExtractor.getIssuer(
-        didToken,
-        strict: true,
-      );
+      final result = MagicIssuerExtractor.getIssuer(didToken, strict: true);
       expect(result, equals(validIssuer));
     });
 
     test('Extracts issuer with loose validation - valid case', () {
       final didToken = generateDidToken(validIssuer);
-      final result = AortemMagicIssuerExtractor.getIssuer(
-        didToken,
-        strict: false,
-      );
+      final result = MagicIssuerExtractor.getIssuer(didToken, strict: false);
       expect(result, equals(validIssuer));
     });
 
     test('Throws error for empty DID Token', () {
       expect(
-        () => AortemMagicIssuerExtractor.getIssuer('', strict: true),
+        () => MagicIssuerExtractor.getIssuer('', strict: true),
         throwsA(isA<ArgumentError>()),
       );
     });
 
     test('Throws error for invalid JWT format', () {
       expect(
-        () =>
-            AortemMagicIssuerExtractor.getIssuer('invalid.token', strict: true),
+        () => MagicIssuerExtractor.getIssuer('invalid.token', strict: true),
         throwsA(isA<FormatException>()),
       );
     });
@@ -58,7 +51,7 @@ void main() {
       final invalidToken = '$header.$payload.signature';
 
       expect(
-        () => AortemMagicIssuerExtractor.getIssuer(invalidToken, strict: true),
+        () => MagicIssuerExtractor.getIssuer(invalidToken, strict: true),
         throwsA(isA<FormatException>()),
       );
     });
@@ -66,7 +59,7 @@ void main() {
     test('Throws error for invalid issuer format in strict mode', () {
       final didToken = generateDidToken('invalid_issuer');
       expect(
-        () => AortemMagicIssuerExtractor.getIssuer(didToken, strict: true),
+        () => MagicIssuerExtractor.getIssuer(didToken, strict: true),
         throwsA(isA<FormatException>()),
       );
     });
@@ -74,17 +67,14 @@ void main() {
     test('Accepts loosely formatted issuer in loose mode', () {
       final looseIssuer = 'auth.magic.com';
       final didToken = generateDidToken(looseIssuer);
-      final result = AortemMagicIssuerExtractor.getIssuer(
-        didToken,
-        strict: false,
-      );
+      final result = MagicIssuerExtractor.getIssuer(didToken, strict: false);
       expect(result, equals(looseIssuer));
     });
 
     test('Throws error for invalid issuer format in loose mode', () {
       final didToken = generateDidToken('');
       expect(
-        () => AortemMagicIssuerExtractor.getIssuer(didToken, strict: false),
+        () => MagicIssuerExtractor.getIssuer(didToken, strict: false),
         throwsA(isA<FormatException>()),
       );
     });

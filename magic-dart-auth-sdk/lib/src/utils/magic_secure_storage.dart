@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:ds_standard_features/ds_standard_features.dart';
 
 /// A utility class for securely handling API keys using SHA-256 hashing.
-class AortemMagicSecureStorage {
+class MagicSecureStorage {
   /// Hashes the given [apiKey] using the SHA-256 algorithm for secure storage.
   ///
   /// This method converts the API key into a SHA-256 hash, which ensures that

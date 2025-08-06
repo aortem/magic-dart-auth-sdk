@@ -1,23 +1,23 @@
 import 'dart:convert';
 import 'package:ds_standard_features/ds_standard_features.dart' as http;
 
-/// UserMetadataByToken
+/// UserMetaDataByIssuer
 ///
-/// A class responsible for fetching user metadata using an authentication token.
+/// A class responsible for fetching user metadata based on the issuer identifier.
 /// It securely communicates with the Magic API to retrieve user details.
 ///
 /// ## Features:
-/// - Ensures the token is valid before sending requests.
-/// - Fetches metadata including issuer, email, and creation timestamp.
+/// - Ensures the issuer is valid before sending requests.
 /// - Handles API responses and errors gracefully.
+/// - Allows dependency injection for testing with mock clients.
 ///
 /// ## Usage Example:
 /// ```dart
-/// var metadataHandler = UserMetadataByToken(apiKey: 'your-api-key');
-/// var metadata = await metadataHandler.getMetadataByToken('user-authentication-token');
-/// print(metadata);
+/// var metadataFetcher = UserMetaDataByIssuer(apiKey: 'your-api-key');
+/// var userMetadata = await metadataFetcher.getMetadataByIssuer('issuer-identifier');
+/// print(userMetadata);
 /// ```
-class AortemMagicUserMetadataByToken {
+class MagicUserMetaDataByIssuer {
   /// API key required for authentication.
   final String apiKey;
 
@@ -27,25 +27,24 @@ class AortemMagicUserMetadataByToken {
   /// HTTP client for making API requests.
   final http.Client client;
 
-  /// Constructor for initializing the metadata handler.
+  /// Constructor for initializing the metadata fetcher.
   /// - Accepts an optional `client` for dependency injection (useful for testing).
   /// - Defaults `apiBaseUrl` to "https://api.magic.com".
-  AortemMagicUserMetadataByToken({
+  MagicUserMetaDataByIssuer({
     required this.apiKey,
-    this.apiBaseUrl = "https://api.magic.com",
+    this.apiBaseUrl = "https://api.magic.link",
     http.Client? client,
-  }) : client = client ?? http.Client();
+  }) : client = client ?? http.Client(); // Allow passing a mock client
 
-  /// Fetches metadata using a provided authentication token.
-  /// - Ensures the token is not empty before sending the request.
+  /// Fetches metadata by issuer identifier.
+  /// - Ensures the issuer is not empty before sending the request.
   /// - Throws an exception if the API request fails.
-  Future<Map<String, dynamic>> getMetadataByToken(String token) async {
-    if (token.isEmpty) {
-      throw ArgumentError("Token cannot be empty.");
+  Future<Map<String, dynamic>> getMetadataByIssuer(String issuer) async {
+    if (issuer.isEmpty) {
+      throw ArgumentError("Issuer cannot be empty.");
     }
 
-    final uri = Uri.parse("$apiBaseUrl/v1/user/metadata?token=$token");
-
+    final uri = Uri.parse("$apiBaseUrl/v1/user/metadata?issuer=$issuer");
     final response = await client.get(
       uri,
       headers: {
