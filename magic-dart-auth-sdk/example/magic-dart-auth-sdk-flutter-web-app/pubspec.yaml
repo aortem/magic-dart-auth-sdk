@@ -20,9 +20,9 @@ version: 1.0.0+1
 
 environment:
 <<<<<<< HEAD
-  sdk: ^3.8.3
+  sdk: ^3.10.3
 =======
-  sdk: ^3.8.2
+  sdk: ^3.10.3
 >>>>>>> main
 
 # Dependencies specify other packages that your package needs in order to work.
