@@ -1,3 +1,17 @@
+## 0.0.4
+
+### Updated
+
+* **Dart SDK requirement increased**:
+  All `pubspec.yaml` files (SDK package, Flutter mobile example, Flutter web example) now require
+  `sdk: ^3.10.3` instead of `^3.8.x`.
+
+* **Dependency upgrades**:
+
+  * `ds_standard_features` from `^0.0.8` → `^0.1.5`
+  * `jwt_generator` from `^0.0.4` → `^0.0.8`
+  * `ds_tools_testing` from `^0.0.6` → `^0.1.4`
+
 ## 0.0.3
 
 ### BREAKING CHANGES
