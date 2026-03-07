@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "aortem-prod"
+  },
+  "targets": {
+    "aortem-prod": {
+      "hosting": {
+        "magic-dart-auth-sdk-docs": [
+          "magic-dart-auth-sdk-docs"
+        ]
+      }
+    }
+  }
+}

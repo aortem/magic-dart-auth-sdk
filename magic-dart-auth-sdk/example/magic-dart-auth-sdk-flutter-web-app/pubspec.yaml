@@ -20,14 +20,20 @@ version: 0.0.1
 
 environment:
 <<<<<<< HEAD
+<<<<<<< HEAD
   sdk: ^3.10.7
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> main
   sdk: ^3.10.3
 =======
   sdk: ^3.10.3
 >>>>>>> main
+<<<<<<< HEAD
 >>>>>>> f6eb2eebb7c41022e2bf0ce607627bbe559597bf
+=======
+>>>>>>> main
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions

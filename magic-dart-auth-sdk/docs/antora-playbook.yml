@@ -1,0 +1,15 @@
+site:
+  title: Magic Dart Auth SDK Docs
+  start_page: magic-dart-auth-sdk::index.adoc
+  url: https://magic-dart-auth-sdk-docs.web.app/
+
+content:
+  sources:
+    - url: ..
+      branches: HEAD
+      start_path: magic-dart-auth-sdk/docs/components/magic-dart-auth-sdk
+
+ui:
+  bundle:
+    url: ./ui/antora-ui-custom/ui-bundle
+    snapshot: true
