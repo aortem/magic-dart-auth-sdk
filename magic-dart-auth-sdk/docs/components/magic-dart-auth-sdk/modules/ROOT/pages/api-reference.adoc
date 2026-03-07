@@ -1,0 +1,22 @@
+﻿= API Reference
+:page-layout: default
+
+This page maps the public package entrypoint to the current source tree.
+
+== Package API
+
+* Package: magic_dart_auth_sdk
+* Version: v0.0.4
+* Package root: apps/sdks/magic-dart-auth-sdk/magic-dart-auth-sdk
+* Import path: package:magic_dart_auth_sdk/magic_dart_auth_sdk.dart
+* Entrypoint file: apps/sdks/magic-dart-auth-sdk/magic-dart-auth-sdk/lib/magic_dart_auth_sdk.dart
+
+== Source Areas
+
+* apps/sdks/magic-dart-auth-sdk/magic-dart-auth-sdk/lib/src
+
+== Supporting Sources
+
+* Tests: apps/sdks/magic-dart-auth-sdk/magic-dart-auth-sdk/test
+* README: apps/sdks/magic-dart-auth-sdk/magic-dart-auth-sdk/README.md
+* Changelog: apps/sdks/magic-dart-auth-sdk/magic-dart-auth-sdk/CHANGELOG.md
