@@ -1,5 +1,6 @@
 import 'dart:convert';
-import 'package:ds_standard_features/ds_standard_features.dart';
+
+import 'package:crypto/crypto.dart';
 
 /// A utility class for securely handling API keys using SHA-256 hashing.
 class MagicSecureStorage {

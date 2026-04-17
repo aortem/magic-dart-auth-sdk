@@ -1,21 +1,100 @@
-﻿= Releases
+= Releases
 :navtitle: Releases
-:description: Release tracking for Magic Dart Auth SDK.
+:description: Release highlights and package history for Magic Dart Auth SDK.
 :sectnums:
 
-This page tracks the current public package version documented for Magic Dart Auth SDK.
+This page summarizes the stable package release history for Magic Dart Auth SDK and keeps the public docs aligned with the published SDK versions.
 '''
 
-== v0.0.4
-
-=== Overview
-The current public package version for magic_dart_auth_sdk is v0.0.4.
-
-=== Release Sources
+== Release Sources
 
 * Pubspec: apps/sdks/magic-dart-auth-sdk/magic-dart-auth-sdk/pubspec.yaml
 * Changelog: apps/sdks/magic-dart-auth-sdk/magic-dart-auth-sdk/CHANGELOG.md
 
+== v0.0.5
+
+=== Overview
+This release finalizes the Dart 3.11.4 baseline, restores secure-storage hashing, and cleans up package validation and release automation.
+
+=== Highlights
+* Dart SDK baseline aligned to `^3.11.4`
+* SHA-256 hashing restored for `MagicSecureStorage`
+* Validation and release-pipeline fixes
+
+=== Improvements
+* Upgraded direct package dependencies to current compatible releases.
+* Reworked HTTP-based tests to use deterministic fake clients.
+* Removed the stray docs artifact from the publishable package.
+
+== v0.0.4
+
+=== Overview
+This release raises the SDK baseline and refreshes key dependencies across the package and example apps.
+
+=== Highlights
+* Dart SDK requirement increased to `^3.10.3`
+* Dependency upgrades across core and testing packages
+
+=== Improvements
+* Updated the SDK, Flutter mobile example, and Flutter web example to `sdk: ^3.10.3`.
+* Upgraded `ds_standard_features`, `jwt_generator`, and `ds_tools_testing`.
+
+== v0.0.3
+
+=== Overview
+This release finalizes the package rename to the `magic_*` namespace and updates the public package name.
+
+=== Highlights
+* Renamed files and identifiers from `aortem_` to `magic_`
+* Renamed the package to `magic_dart_auth_sdk`
+
 === Notes
-* Keep this page aligned with the version declared in pubspec.yaml.
-* Detailed release history and change notes remain in CHANGELOG.md until fuller curated release notes are added here.
+* This release includes breaking namespace and import-path changes.
+
+== v0.0.2
+
+=== Overview
+This release focuses on cleanup, syntax fixes, and validation improvements across the package and tests.
+
+=== Highlights
+* Documentation and commit-validation cleanup
+* Syntax and exception-formatting fixes
+* Test formatting improvements
+
+=== Improvements
+* Extended local commit validation to support docs-style commit messages.
+* Standardized method signatures and formatting in SDK sources and tests.
+* Cleaned up documentation comments for consistency.
+
+=== Fixes
+* Removed an emulator log from the package.
+* Corrected JSON map syntax and multi-line exception formatting in Magic auth flows.
+
+== v0.0.1
+
+=== Overview
+This release establishes the first stable package version with stronger auth validation and improved SDK error reporting.
+
+=== Highlights
+* First stable package release
+* Improved auth error reporting
+* Safer response parsing and validation
+
+=== Improvements
+* Introduced `MagicHttpException` for clearer SDK error reporting.
+* Improved `MagicAuth.isAuthorized()` token validation behavior.
+* Hardened response-body parsing and expanded test coverage.
+
+== Pre-release History
+
+=== Overview
+Earlier pre-stable package builds are part of the SDK history and remain documented in the changelog.
+
+=== Included Pre-release Tags
+* `0.0.1-pre+2`
+* `0.0.1-pre+1`
+* `0.0.1-pre`
+
+=== Notes
+* Keep this page aligned with the version declared in `pubspec.yaml`.
+* Use `CHANGELOG.md` as the source of truth for exhaustive historical change notes.
