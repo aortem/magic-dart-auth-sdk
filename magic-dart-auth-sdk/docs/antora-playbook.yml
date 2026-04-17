@@ -5,7 +5,7 @@ site:
 
 content:
   sources:
-    - url: ..
+    - url: ../..
       branches: HEAD
       start_path: magic-dart-auth-sdk/docs/components/magic-dart-auth-sdk
 

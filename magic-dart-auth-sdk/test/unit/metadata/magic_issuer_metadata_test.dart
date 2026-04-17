@@ -1,62 +1,53 @@
+import 'dart:convert';
+
+import 'package:ds_standard_features/ds_standard_features.dart' as http;
 import 'package:ds_tools_testing/ds_tools_testing.dart';
 import 'package:magic_dart_auth_sdk/src/metadata/magic_issuer_metadata.dart';
-
-import 'dart:convert';
-import 'package:ds_standard_features/ds_standard_features.dart' as http;
-
-// Mock HTTP Client
-class MockHttpClient extends Mock implements http.Client {}
+import '../../support/fake_http_client.dart';
 
 void main() {
   late MagicUserMetaDataByIssuer userMetadata;
-  late MockHttpClient mockHttpClient;
 
-  const String apiKey = "test_api_key";
-  const String apiBaseUrl = "https://api.magic.com";
-  const String validIssuer = "did:magic:12345";
-
-  setUpAll(() {
-    registerFallbackValue(Uri()); // FIX: Register Uri fallback
-  });
+  const apiKey = 'test_api_key';
+  const apiBaseUrl = 'https://api.magic.com';
+  const validIssuer = 'did:magic:12345';
 
   setUp(() {
-    mockHttpClient = MockHttpClient();
     userMetadata = MagicUserMetaDataByIssuer(
       apiKey: apiKey,
       apiBaseUrl: apiBaseUrl,
-      client: mockHttpClient,
+      client: FakeHttpClient(
+        (_) async => http.Response(
+          jsonEncode({
+            'issuer': validIssuer,
+            'email': 'user@example.com',
+            'publicAddress': '0x123456789abcdef',
+            'createdAt': 1700000000,
+          }),
+          200,
+        ),
+      ),
     );
   });
 
-  test("✅ Successfully retrieves metadata when given a valid issuer", () async {
-    final mockResponse = {
-      "issuer": validIssuer,
-      "email": "user@example.com",
-      "publicAddress": "0x123456789abcdef",
-      "createdAt": 1700000000,
-    };
-
-    when(
-      () => mockHttpClient.get(any(), headers: any(named: "headers")),
-    ).thenAnswer((_) async => http.Response(jsonEncode(mockResponse), 200));
-
+  test('Successfully retrieves metadata for a valid issuer', () async {
     final metadata = await userMetadata.getMetadataByIssuer(validIssuer);
+
     expect(metadata, isA<Map<String, dynamic>>());
-    expect(metadata["issuer"], equals(validIssuer));
+    expect(metadata['issuer'], validIssuer);
   });
 
-  test("❌ Throws ArgumentError when issuer is empty", () async {
-    expect(() => userMetadata.getMetadataByIssuer(""), throwsArgumentError);
+  test('Throws ArgumentError when issuer is empty', () async {
+    expect(() => userMetadata.getMetadataByIssuer(''), throwsArgumentError);
   });
 
-  test("⚠️ Handles network failure properly", () async {
-    when(
-      () => mockHttpClient.get(any(), headers: any(named: "headers")),
-    ).thenThrow(Exception("Network error"));
-
-    expect(
-      () => userMetadata.getMetadataByIssuer(validIssuer),
-      throwsException,
+  test('Handles network failure properly', () async {
+    userMetadata = MagicUserMetaDataByIssuer(
+      apiKey: apiKey,
+      apiBaseUrl: apiBaseUrl,
+      client: FakeHttpClient((_) async => throw Exception('Network error')),
     );
+
+    expect(() => userMetadata.getMetadataByIssuer(validIssuer), throwsException);
   });
 }

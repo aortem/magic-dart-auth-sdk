@@ -1,5 +1,25 @@
-## 0.0.4
+# Changelog
 
+## [0.0.5]
+### Updated
+
+* **Dart SDK requirement aligned**:
+  The SDK and maintained example apps now target `sdk: ^3.11.4`.
+
+* **Dependency upgrades**:
+
+  * `crypto` to `^3.0.7`
+  * `ds_standard_features` to `^0.1.6`
+  * `jwt_generator` to `^0.0.9`
+
+### Fixed
+
+* Restored SHA-256 hashing support in `MagicSecureStorage`.
+* Reworked HTTP-based unit tests to use deterministic fake clients.
+* Restored the backend validation child pipeline and corrected release changelog parsing.
+* Removed the stray `docs/test.txt` artifact from the publishable package.
+
+## [0.0.4]
 ### Updated
 
 * **Dart SDK requirement increased**:
@@ -12,15 +32,13 @@
   * `jwt_generator` from `^0.0.4` → `^0.0.8`
   * `ds_tools_testing` from `^0.0.6` → `^0.1.4`
 
-## 0.0.3
-
+## [0.0.3]
 ### BREAKING CHANGES
 - **Rename prefix**: all files/folders and identifiers formerly using `aortem_` now use `magic_`.  
 - **Package rename**: adjusted `pubspec.yaml` `name:` from `magic_auth_sdk` to `magic_dart_auth_sdk`.  
 - **Import paths**: updated all `import 'package:magic_…'` → `import 'package:magic_…'`.
 
-## 0.0.2
-
+## [0.0.2]
 - **chore**: Remove `ui-debug.log` from the package to avoid committing emulator logs.
 - **chore**: Extend commit-message validator (`local_dev_tools/validate_commit_msg.dart`) to allow a new `docs` type.  
 - **fix**: Correct trailing-comma placement in the JSON map literal returned by `MagicMultichainMetadataService` to ensure valid Dart syntax.  
@@ -33,22 +51,19 @@
   - `test/unit/auth/magic_token_decode_test.dart`  
   - `test/unit/utils/magic_parse_auth_header_test.dart`  
 
-## 0.0.1
-
+## [0.0.1]
 - Introduced `MagicHttpException` for improved error reporting in the SDK.
 - Updated `MagicAuth.isAuthorized()` logic to improve access token validation.
 - Improved response body parsing with safer JSON decoding.
 - Enhanced test coverage for error handling and auth validation.
 
-## 0.0.1-pre+2
-
+## [0.0.1-pre+2]
 - update readme
 
-## 0.0.1-pre+1
-
+## [0.0.1-pre+1]
 - Add all methods
 - Resolve all issues detected by dart analyze.
 
-## 0.0.1-pre
-
+## [0.0.1-pre]
 - Initial pre-release version of the magic Dart Auth SDK.
+
