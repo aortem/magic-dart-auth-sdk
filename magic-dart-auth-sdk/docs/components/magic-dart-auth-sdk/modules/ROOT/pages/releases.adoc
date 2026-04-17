@@ -6,7 +6,7 @@
 This page summarizes the stable package release history for Magic Dart Auth SDK and keeps the public docs aligned with the published SDK versions.
 '''
 
-=== Release Sources
+== Release Sources
 
 * Pubspec: apps/sdks/magic-dart-auth-sdk/magic-dart-auth-sdk/pubspec.yaml
 * Changelog: apps/sdks/magic-dart-auth-sdk/magic-dart-auth-sdk/CHANGELOG.md
