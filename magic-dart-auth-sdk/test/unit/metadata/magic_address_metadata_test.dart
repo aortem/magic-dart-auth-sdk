@@ -1,66 +1,57 @@
+import 'dart:convert';
+
+import 'package:ds_standard_features/ds_standard_features.dart' as http;
 import 'package:ds_tools_testing/ds_tools_testing.dart';
 import 'package:magic_dart_auth_sdk/src/metadata/magic_address_metadata.dart';
-
-import 'dart:convert';
-import 'package:ds_standard_features/ds_standard_features.dart' as http;
-
-// Mock HTTP Client
-class MockHttpClient extends Mock implements http.Client {}
+import '../../support/fake_http_client.dart';
 
 void main() {
   late MagicUserMetadataByPublicAddress userMetadata;
-  late MockHttpClient mockHttpClient;
 
-  const String apiKey = "test_api_key";
-  const String apiBaseUrl = "https://api.magic.com";
-  const String validPublicAddress = "0x123456789abcdef";
-
-  setUpAll(() {
-    registerFallbackValue(Uri());
-  });
+  const apiKey = 'test_api_key';
+  const apiBaseUrl = 'https://api.magic.com';
+  const validPublicAddress = '0x123456789abcdef';
 
   setUp(() {
-    mockHttpClient = MockHttpClient();
     userMetadata = MagicUserMetadataByPublicAddress(
       apiKey: apiKey,
       apiBaseUrl: apiBaseUrl,
-      client: mockHttpClient,
+      client: FakeHttpClient(
+        (_) async => http.Response(
+          jsonEncode({
+            'issuer': 'did:magic:$validPublicAddress',
+            'email': 'user@example.com',
+            'publicAddress': validPublicAddress,
+            'createdAt': 1700000000,
+          }),
+          200,
+        ),
+      ),
     );
   });
 
-  test(
-    "✅ Successfully retrieves metadata when given a valid public address",
-    () async {
-      final mockResponse = {
-        "issuer": "did:magic:$validPublicAddress",
-        "email": "user@example.com",
-        "publicAddress": validPublicAddress,
-        "createdAt": 1700000000,
-      };
+  test('Successfully retrieves metadata for a valid public address', () async {
+    final metadata = await userMetadata.getMetadataByPublicAddress(
+      validPublicAddress,
+    );
 
-      when(
-        () => mockHttpClient.get(any(), headers: any(named: "headers")),
-      ).thenAnswer((_) async => http.Response(jsonEncode(mockResponse), 200));
+    expect(metadata, isA<Map<String, dynamic>>());
+    expect(metadata['publicAddress'], validPublicAddress);
+  });
 
-      final metadata = await userMetadata.getMetadataByPublicAddress(
-        validPublicAddress,
-      );
-      expect(metadata, isA<Map<String, dynamic>>());
-      expect(metadata["publicAddress"], equals(validPublicAddress));
-    },
-  );
-
-  test("❌ Throws ArgumentError when public address is empty", () async {
+  test('Throws ArgumentError when public address is empty', () async {
     expect(
-      () => userMetadata.getMetadataByPublicAddress(""),
+      () => userMetadata.getMetadataByPublicAddress(''),
       throwsArgumentError,
     );
   });
 
-  test("⚠️ Handles network failure properly", () async {
-    when(
-      () => mockHttpClient.get(any(), headers: any(named: "headers")),
-    ).thenThrow(Exception("Network error"));
+  test('Handles network failure properly', () async {
+    userMetadata = MagicUserMetadataByPublicAddress(
+      apiKey: apiKey,
+      apiBaseUrl: apiBaseUrl,
+      client: FakeHttpClient((_) async => throw Exception('Network error')),
+    );
 
     expect(
       () => userMetadata.getMetadataByPublicAddress(validPublicAddress),
@@ -68,12 +59,12 @@ void main() {
     );
   });
 
-  test("🛠️ Returns stub data when useStub=true", () async {
+  test('Returns stub data when useStub is true', () async {
     final metadata = await userMetadata.getMetadataByPublicAddress(
       validPublicAddress,
       useStub: true,
     );
-    expect(metadata["publicAddress"], equals(validPublicAddress));
-    expect(metadata.containsKey("issuer"), isTrue);
+    expect(metadata['publicAddress'], validPublicAddress);
+    expect(metadata.containsKey('issuer'), isTrue);
   });
 }

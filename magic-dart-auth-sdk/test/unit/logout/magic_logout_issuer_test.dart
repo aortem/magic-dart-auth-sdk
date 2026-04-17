@@ -1,77 +1,62 @@
 import 'dart:convert';
+
 import 'package:ds_standard_features/ds_standard_features.dart' as http;
 import 'package:ds_tools_testing/ds_tools_testing.dart';
 import 'package:magic_dart_auth_sdk/src/logout/magic_logout_issuer.dart';
-
-class MockHttpClient extends Mock implements http.Client {}
+import '../../support/fake_http_client.dart';
 
 void main() {
   late MagicLogoutByIssuer logoutService;
-  late MockHttpClient mockHttpClient;
 
   setUp(() {
-    mockHttpClient = MockHttpClient();
     logoutService = MagicLogoutByIssuer(
-      apiKey: "test_api_key",
-      client: mockHttpClient,
+      apiKey: 'test_api_key',
+      client: FakeHttpClient(
+        (_) async => http.Response(
+          jsonEncode({
+            'success': true,
+            'message': 'Logged out successfully',
+          }),
+          200,
+        ),
+      ),
     );
-
-    registerFallbackValue(Uri.parse("https://api.magic.com/v1/user/logout"));
   });
 
-  test("Returns success when logout is successful", () async {
-    const String testIssuer = "did:magic:12345";
-    final expectedResponse = {
-      "success": true,
-      "message": "Logged out successfully",
-    };
-
-    when(
-      () => mockHttpClient.post(
-        any(),
-        headers: any(named: "headers"),
-        body: any(named: "body"),
-      ),
-    ).thenAnswer((_) async => http.Response(jsonEncode(expectedResponse), 200));
+  test('Returns success when logout is successful', () async {
+    const testIssuer = 'did:magic:12345';
 
     final result = await logoutService.logoutByIssuer(testIssuer);
 
-    expect(result, expectedResponse);
+    expect(result['success'], true);
+    expect(result['message'], 'Logged out successfully');
   });
 
-  test("Throws an error when issuer is empty", () async {
-    expect(
-      () => logoutService.logoutByIssuer(""),
-      throwsA(isA<ArgumentError>()),
+  test('Throws an error when issuer is empty', () async {
+    expect(() => logoutService.logoutByIssuer(''), throwsArgumentError);
+  });
+
+  test('Throws an error when API response is not 200', () async {
+    logoutService = MagicLogoutByIssuer(
+      apiKey: 'test_api_key',
+      client: FakeHttpClient((_) async => http.Response('Unauthorized', 401)),
     );
-  });
-
-  test("Throws an error when API response is not 200", () async {
-    const String testIssuer = "did:magic:invalid";
-
-    when(
-      () => mockHttpClient.post(
-        any(),
-        headers: any(named: "headers"),
-        body: any(named: "body"),
-      ),
-    ).thenAnswer((_) async => http.Response("Unauthorized", 401));
 
     expect(
-      () => logoutService.logoutByIssuer(testIssuer),
+      () => logoutService.logoutByIssuer('did:magic:invalid'),
       throwsA(isA<Exception>()),
     );
   });
 
-  test("Returns mock response when useStub is true", () async {
+  test('Returns mock response when useStub is true', () async {
     final stubLogoutService = MagicLogoutByIssuer(
-      apiKey: "test_api_key",
+      apiKey: 'test_api_key',
       useStub: true,
     );
 
-    final response = await stubLogoutService.logoutByIssuer("did:magic:12345");
+    final response = await stubLogoutService.logoutByIssuer('did:magic:12345');
 
-    expect(response["success"], true);
-    expect(response["message"], contains("logged out successfully"));
+    expect(response['success'], true);
+    expect(response['message'], contains('logged out successfully'));
   });
 }

@@ -11,6 +11,21 @@ This page summarizes the stable package release history for Magic Dart Auth SDK 
 * Pubspec: apps/sdks/magic-dart-auth-sdk/magic-dart-auth-sdk/pubspec.yaml
 * Changelog: apps/sdks/magic-dart-auth-sdk/magic-dart-auth-sdk/CHANGELOG.md
 
+== v0.0.5
+
+=== Overview
+This release finalizes the Dart 3.11.4 baseline, restores secure-storage hashing, and cleans up package validation and release automation.
+
+=== Highlights
+* Dart SDK baseline aligned to `^3.11.4`
+* SHA-256 hashing restored for `MagicSecureStorage`
+* Validation and release-pipeline fixes
+
+=== Improvements
+* Upgraded direct package dependencies to current compatible releases.
+* Reworked HTTP-based tests to use deterministic fake clients.
+* Removed the stray docs artifact from the publishable package.
+
 == v0.0.4
 
 === Overview

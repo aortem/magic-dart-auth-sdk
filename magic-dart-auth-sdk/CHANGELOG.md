@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.0.5]
+### Updated
+
+* **Dart SDK requirement aligned**:
+  The SDK and maintained example apps now target `sdk: ^3.11.4`.
+
+* **Dependency upgrades**:
+
+  * `crypto` to `^3.0.7`
+  * `ds_standard_features` to `^0.1.6`
+  * `jwt_generator` to `^0.0.9`
+
+### Fixed
+
+* Restored SHA-256 hashing support in `MagicSecureStorage`.
+* Reworked HTTP-based unit tests to use deterministic fake clients.
+* Restored the backend validation child pipeline and corrected release changelog parsing.
+* Removed the stray `docs/test.txt` artifact from the publishable package.
+
 ## [0.0.4]
 ### Updated
 
