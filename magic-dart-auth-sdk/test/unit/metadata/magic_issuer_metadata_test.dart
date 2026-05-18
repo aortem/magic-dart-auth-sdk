@@ -48,6 +48,9 @@ void main() {
       client: FakeHttpClient((_) async => throw Exception('Network error')),
     );
 
-    expect(() => userMetadata.getMetadataByIssuer(validIssuer), throwsException);
+    expect(
+      () => userMetadata.getMetadataByIssuer(validIssuer),
+      throwsException,
+    );
   });
 }

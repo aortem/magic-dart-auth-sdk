@@ -33,7 +33,10 @@ void main() {
   });
 
   test('Throws an error when token is empty', () async {
-    expect(() => userMetadataByToken.getMetadataByToken(''), throwsArgumentError);
+    expect(
+      () => userMetadataByToken.getMetadataByToken(''),
+      throwsArgumentError,
+    );
   });
 
   test('Throws an error when API response is not 200', () async {
