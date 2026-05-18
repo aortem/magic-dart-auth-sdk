@@ -13,10 +13,7 @@ void main() {
       apiKey: 'test_api_key',
       client: FakeHttpClient(
         (_) async => http.Response(
-          jsonEncode({
-            'success': true,
-            'message': 'Logged out successfully',
-          }),
+          jsonEncode({'success': true, 'message': 'Logged out successfully'}),
           200,
         ),
       ),
