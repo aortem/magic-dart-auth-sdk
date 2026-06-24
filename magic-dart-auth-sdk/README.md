@@ -16,8 +16,7 @@ The Magic Dart Auth SDK offers a robust and flexible set of tools to perform aut
 
 If you want to use the Magic Dart Auth SDK for implementing a magic authentication in your Flutter projects follow the instructions on how to set up the auth SDK.
 
-- Ensure you have Dart 3.12.1 or newer installed in your system. Dart 3.12.2
-  is supported for standalone Dart workflows.
+- Ensure you have Dart 3.12.2 or newer installed in your system.
 - Set up a magic project and service account.
 - Set up a Flutter project.
 
