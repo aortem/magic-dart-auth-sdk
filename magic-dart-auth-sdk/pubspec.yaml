@@ -4,7 +4,7 @@ version: 0.0.6
 repository: https://github.com/aortem/magic-dart-auth-sdk
 
 environment:
-  sdk: ^3.12.1
+  sdk: ^3.12.2
 
 # Add regular dependencies here.
 
