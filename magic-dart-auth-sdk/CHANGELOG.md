@@ -1,6 +1,13 @@
 # Changelog
 
 
+
+## 0.0.7
+
+- Declare the lints package used by analysis_options.yaml.
+- Validate analysis, tests and the release archive on Dart 3.13.4.
+
+
 ## 0.0.6
 
 - Bumped package metadata for the Dart 3.12.2 upgrade pass.

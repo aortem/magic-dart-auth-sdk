@@ -6,8 +6,8 @@ analyze_flutter_web:
   image: ghcr.io/cirruslabs/flutter:stable
   before_script:
     - |
-      # Temporary until ghcr.io/cirruslabs/flutter:stable includes Flutter 3.44.3 or later.
-      FLUTTER_TARGET_VERSION=3.44.3
+      # Temporary until ghcr.io/cirruslabs/flutter:stable includes Flutter 3.47.5.
+      FLUTTER_TARGET_VERSION=3.47.5
       export FLUTTER_ROOT="${FLUTTER_ROOT:-${FLUTTER_HOME:-$HOME/sdks/flutter}}"
       if ! flutter --version | grep -q "Flutter ${FLUTTER_TARGET_VERSION}"; then
         git -C "$FLUTTER_ROOT" fetch --depth 1 origin "refs/tags/${FLUTTER_TARGET_VERSION}:refs/tags/${FLUTTER_TARGET_VERSION}"
@@ -15,48 +15,10 @@ analyze_flutter_web:
       fi
       flutter --version
   script:
-    - echo "Analyzing example project..."
     - cd magic-dart-auth-sdk/example/magic-dart-auth-sdk-flutter-web-app
-    - flutter pub get || { echo "Failed to install dependencies. Exiting..."; exit 1; }
-    - dart analyze > analysis_report.txt 2> error_log.txt || true
-
-    # Filter and summarize analysis results
-    - echo "Separating issues into categories..."
-    - grep -i "info" analysis_report.txt > info_issues.txt || true
-    - grep -i "warning" analysis_report.txt > warning_issues.txt || true
-    - grep -i "error" analysis_report.txt > error_issues.txt || true
-    - echo "Summary of analysis issues:"
-    - |
-      info_count=$(wc -l < info_issues.txt || echo 0)
-      warning_count=$(wc -l < warning_issues.txt || echo 0)
-      error_count=$(wc -l < error_issues.txt || echo 0)
-      echo "Info Issues: $info_count"
-      echo "Warning Issues: $warning_count"
-      echo "Error Issues: $error_count"
-
-    # Check for outdated dependencies
-    - echo "Checking for outdated dependencies..."
-    - dart pub outdated || true
-
-    # Encourage collaboration by highlighting contributors who worked on relevant areas.
-    - echo "Collaboratively resolving identified issues..."
-    - |
-      while IFS= read -r line; do
-        file=$(echo $line | awk -F ':' '{print $1}')
-        if [[ -n "$file" ]]; then
-          git_log=$(git log -n 1 --pretty=format:"%h by %an <%ae>" -- "$file")
-          echo "File: $file - Last modified by: $git_log"
-          echo "Suggested collaboration: Work with the contributor to address the issue."
-        fi
-      done < error_issues.txt
-    - echo "Example project analysis complete. Check categorized issue files for details."
-
+    - flutter pub get
+    - flutter analyze
+    - flutter test
+    - flutter build web
   rules:
-   - when: always
-
-  artifacts:
-    paths:
-      - magic-dart-auth-sdk/example/magic-dart-auth-sdk-flutter-web-app/info_issues.txt
-      - magic-dart-auth-sdk/example/magic-dart-auth-sdk-flutter-web-app/warning_issues.txt
-      - magic-dart-auth-sdk/example/magic-dart-auth-sdk-flutter-web-app/error_issues.txt
-    expire_in: 1h
+    - when: always
