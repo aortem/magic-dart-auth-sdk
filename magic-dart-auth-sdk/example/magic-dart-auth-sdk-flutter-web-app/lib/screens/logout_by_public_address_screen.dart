@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:magic_dart_auth_sdk/magic_dart_auth_sdk.dart';
 
 class LogoutByPublicAddressScreen extends StatefulWidget {
-  const LogoutByPublicAddressScreen({Key? key}) : super(key: key);
+  const LogoutByPublicAddressScreen({super.key});
 
   @override
   State<LogoutByPublicAddressScreen> createState() =>

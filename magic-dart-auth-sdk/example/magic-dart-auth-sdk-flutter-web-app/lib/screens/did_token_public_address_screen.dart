@@ -64,21 +64,17 @@ class _DidTokenPublicAddressScreenState
               children: [
                 const Text("Validation Mode:"),
                 const SizedBox(width: 8),
-                Row(
-                  children: [
-                    Radio<bool>(
-                      value: true,
-                      groupValue: _isStrict,
-                      onChanged: (val) => setState(() => _isStrict = val!),
-                    ),
-                    const Text("Strict"),
-                    Radio<bool>(
-                      value: false,
-                      groupValue: _isStrict,
-                      onChanged: (val) => setState(() => _isStrict = val!),
-                    ),
-                    const Text("Loose"),
-                  ],
+                RadioGroup<bool>(
+                  groupValue: _isStrict,
+                  onChanged: (value) => setState(() => _isStrict = value!),
+                  child: Row(
+                    children: [
+                      Radio<bool>(value: true),
+                      const Text("Strict"),
+                      Radio<bool>(value: false),
+                      const Text("Loose"),
+                    ],
+                  ),
                 ),
               ],
             ),

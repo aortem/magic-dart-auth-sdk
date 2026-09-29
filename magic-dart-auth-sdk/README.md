@@ -130,3 +130,8 @@ void main() async {
 ## Documentation
 
 For more refer to Gitbook for prelease [documentation here](https://aortem.gitbook.io/magic-dart-auth-admin-sdk/).
+
+
+## Dart compatibility
+
+Validated with Dart 3.13.4. The minimum supported SDK remains Dart 3.12.2.

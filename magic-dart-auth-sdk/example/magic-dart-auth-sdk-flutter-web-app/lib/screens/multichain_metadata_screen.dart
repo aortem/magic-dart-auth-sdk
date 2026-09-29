@@ -89,7 +89,7 @@ class _MultichainMetadataScreenState extends State<MultichainMetadataScreen> {
         child: Column(
           children: [
             DropdownButtonFormField<String>(
-              value: _selectedType,
+              initialValue: _selectedType,
               items: const [
                 DropdownMenuItem(value: 'issuer', child: Text('Issuer')),
                 DropdownMenuItem(
