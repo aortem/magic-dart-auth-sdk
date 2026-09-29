@@ -4,7 +4,7 @@ stages:
 # Analyze Main Project
 analyze_main:
   stage: analyze
-  image: dart:stable
+  image: dart:3.13.4
   rules:
     - when: always
   script:
@@ -67,8 +67,8 @@ analyze_example:
   image: ghcr.io/cirruslabs/flutter:stable
   before_script:
     - |
-      # Temporary until ghcr.io/cirruslabs/flutter:stable includes Flutter 3.44.3 or later.
-      FLUTTER_TARGET_VERSION=3.44.3
+      # Temporary until ghcr.io/cirruslabs/flutter:stable includes Flutter 3.47.5.
+      FLUTTER_TARGET_VERSION=3.47.5
       export FLUTTER_ROOT="${FLUTTER_ROOT:-${FLUTTER_HOME:-$HOME/sdks/flutter}}"
       if ! flutter --version | grep -q "Flutter ${FLUTTER_TARGET_VERSION}"; then
         git -C "$FLUTTER_ROOT" fetch --depth 1 origin "refs/tags/${FLUTTER_TARGET_VERSION}:refs/tags/${FLUTTER_TARGET_VERSION}"
@@ -128,7 +128,7 @@ analyze_example:
     - analyze_main
   artifacts:
     paths:
-      -magic-dart-auth-sdk/example/magic-dart-auth-sdk-flutter-mobile-app/analysis_report.txt
-      -magic-dart-auth-sdk/example/magic-dart-auth-sdk-flutter-mobile-app/error_log.txt
-      -magic-dart-auth-sdk/example/magic-dart-auth-sdk-flutter-mobile-app/filtered_report.txt
+      - magic-dart-auth-sdk/example/magic-dart-auth-sdk-flutter-mobile-app/analysis_report.txt
+      - magic-dart-auth-sdk/example/magic-dart-auth-sdk-flutter-mobile-app/error_log.txt
+      - magic-dart-auth-sdk/example/magic-dart-auth-sdk-flutter-mobile-app/filtered_report.txt
     expire_in: 1h
