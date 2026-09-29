@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:magic_dart_auth_sdk/magic_dart_auth_sdk.dart'; // Replace with actual import path
 import 'package:flutter/material.dart';
-import 'package:magic_sdk/magic_sdk.dart';
 
 class GetMetadataByIssuerScreen extends StatefulWidget {
   final String apiKey;
