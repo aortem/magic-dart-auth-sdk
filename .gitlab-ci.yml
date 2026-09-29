@@ -76,15 +76,15 @@ validation_trigger_docs:
 
 # # Sample App Conditional Triggers    
 
-# analyze_flutter_web:
-#   stage: analyze_sample_apps
-#   trigger:
-#     include: tools/pipelines/frontend/child-ci-analyze-flutter-web.yml
-# #  needs:
-# #    - job: unit_test_trigger
-#   rules:
-#     # Always runs after unit_test trigger
-#     - when: always
+analyze_flutter_web:
+  stage: analyze_sample_apps
+  trigger:
+    strategy: depend
+    include: tools/pipelines/frontend/child-ci-analyze-flutter-web.yml
+  needs:
+    - job: validation_trigger
+  rules:
+    - when: always
 
 # Analyze Conditional Triggers
 analyze_flutter_mobile:

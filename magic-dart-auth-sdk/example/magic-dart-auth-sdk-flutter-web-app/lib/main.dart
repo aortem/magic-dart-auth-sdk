@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:magic_dart_auth_sdk_flutter_web_app/screens/DIDTokenValidationScreen.dart';
-import 'package:magic_dart_auth_sdk_flutter_web_app/screens/LogoutByIssuerScreen.dart';
-import 'package:magic_dart_auth_sdk_flutter_web_app/screens/LogoutByTokenScreen.dart';
+import 'package:magic_dart_auth_sdk_flutter_web_app/screens/did_token_validation_screen.dart';
+import 'package:magic_dart_auth_sdk_flutter_web_app/screens/logout_by_issuer_screen.dart';
+import 'package:magic_dart_auth_sdk_flutter_web_app/screens/logout_by_token_screen.dart';
 import 'package:magic_dart_auth_sdk_flutter_web_app/screens/api_key_test_screen.dart';
 import 'package:magic_dart_auth_sdk_flutter_web_app/screens/auth_header_test_screen.dart';
 import 'package:magic_dart_auth_sdk_flutter_web_app/screens/did_token_ecoder.dart';
